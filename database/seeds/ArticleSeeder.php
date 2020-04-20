@@ -1,6 +1,8 @@
 <?php
 
+use App\Article;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ArticleSeeder extends Seeder
 {
@@ -11,6 +13,7 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Article::truncate();
+        factory(Article::class,10)->create();
     }
 }

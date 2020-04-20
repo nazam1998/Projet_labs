@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Accueil;
+use App\Article;
 use App\Carousel;
 use App\Contact;
 use App\Footer;
@@ -27,10 +28,22 @@ class WelcomeController extends Controller
         return view('welcome',compact('carousels','accueil','service3','testimonials','services','team','ceo','footer','contact'));
     }
     public function service(){
-        return view('service');
+
+        $lastservices=Service::latest()->take(9)->get();
+        $accueil=Accueil::find(1);
+        $services=Service::latest()->take(6)->get();
+        $articles=Article::latest()->take(3)->get();
+        $footer=Footer::find(1);
+        $contact=Contact::find(1);
+        return view('service',compact('lastservices','services','accueil','contact','footer','articles'));
+    
     }
     public function blog(){
-        return view('blog');
+        $accueil=Accueil::find(1);
+        $articles=Article::latest()->take(3)->get();
+        $footer=Footer::find(1);
+        $contact=Contact::find(1);
+        return view('blog',compact('accueil','articles','footer','contact'));
     }
     public function contact(){
         return view('contact');
