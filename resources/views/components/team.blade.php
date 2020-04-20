@@ -6,30 +6,28 @@
 				<h2>Get in <span>the Lab</span> and  meet the team</h2>
 			</div>
 			<div class="row">
+				@foreach ($team as $index=>$item)
 				<!-- single member -->
+				@if ($index==2)
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="img/team/1.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Project Manager</h3>
+						<img src="{{asset('storage/'.$ceo->image)}}" alt="">
+					<h2>{{$ceo->nom.' '.$ceo->prenom}}</h2>
+					<h3>{{$ceo->role->role}}</h3>
 					</div>
 				</div>
-				<!-- single member -->
+				@else
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="img/team/2.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Junior developer</h3>
+						<img src="{{asset('storage/'.$item->image)}}" alt="">
+					<h2>{{$item->nom.' '.$item->prenom}}</h2>
+					<h3>{{$item->role->role}}</h3>
 					</div>
 				</div>
-				<!-- single member -->
-				<div class="col-sm-4">
-					<div class="member">
-						<img src="img/team/3.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Digital designer</h3>
-					</div>
-				</div>
+				@endif
+				
+				@endforeach
+				
 			</div>
 		</div>
 	</div>

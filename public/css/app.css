@@ -1954,5 +1954,7 @@ ul {
 	.buttons button {
 		margin-bottom: 20px;
 	}
+}html {
+  scroll-behavior: smooth;
 }
 
