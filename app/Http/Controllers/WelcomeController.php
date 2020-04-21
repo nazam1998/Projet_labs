@@ -38,7 +38,7 @@ class WelcomeController extends Controller
         $lastservices=Service::latest()->take(9)->get();
         $accueil=Accueil::find(1);
         $services=Service::latest()->take(6)->get();
-        $articles=Article::latest()->take(3)->get();
+        $articles=Article::where('valide',true)->latest()->take(3)->get();
         $footer=Footer::find(1);
         $contact=Contact::find(1);
         return view('service',compact('lastservices','services','accueil','contact','footer','articles'));

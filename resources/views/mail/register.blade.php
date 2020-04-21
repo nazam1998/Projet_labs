@@ -1,0 +1,1 @@
+<h1>Merci de vous être inscrits à notre site</h1>

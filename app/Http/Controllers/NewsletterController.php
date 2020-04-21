@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewsMail;
 use App\Newsletter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
@@ -30,12 +32,13 @@ class NewsletterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email'=>'required|email|unique:newsletter'
+            'email'=>'required|email|unique:newsletters'
         ]);
         $news=new Newsletter();
         $news->email=$request->email;
         $news->save();
-        return Redirect::to(URL::previous() . "#newsletter");
+        Mail::to($news->email)->send(new NewsMail($news->email));
+        return Redirect::to(URL::previous() . "#newsletter")->with('msg','Merci pour votre inscription');
         }
 
     

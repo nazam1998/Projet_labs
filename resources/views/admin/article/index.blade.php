@@ -41,7 +41,11 @@
                     <td>{{$item->user->nom.' '.$item->user->prenom}}</td>
                 <td>
                     <a href="{{route('article.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
-                <a href="{{route('article.destroy',$item)}}" class="btn btn-danger">Supprimer</a>
+                <form action="{{route('article.destroy',$item)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
                 </td>
                 </tr>
                 @endforeach

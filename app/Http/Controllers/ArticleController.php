@@ -55,11 +55,14 @@ class ArticleController extends Controller
         $article->titre=$request->titre;
         $article->texte=$request->texte;
         $article->user_id=Auth::id();
-        $article->tag_id=$request->tag;
-        $article->categorie_id=$request->categorie_id;
+        $article->categorie_id=$request->categorie;
         $article->valide=false;
         $article->save();
-        $article->tags()->sync( $request->tag );
+        foreach($request->tag as $tag){
+
+            Tag::where('id',$tag)->first()->articles()->attach($article->id);
+            $article->tags()->attach($tag);
+        }
         return redirect()->route('article.index');
 
     }
@@ -72,7 +75,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        $article->valide=true;
+        $article->save();
+        return redirect()->back();
     }
 
     /**
@@ -101,10 +106,28 @@ class ArticleController extends Controller
             'titre'=>'required|string',
             'texte'=>'required|string',
             'image'=>'required|image',
-            'user_id'=>'required|integer',
-            'categorie_id'=>'required|integer',
-            'tag_id'=>'required|integer'
+            'categorie'=>'required|integer',
+            // 'tag_id'=>'required|integer'
         ]);
+        if($request->hasFile('image')){
+            if(Storage::disk('public')->exists($article->image)){
+                Storage::disk('public')->delete($article->image);
+            }
+        }
+        $image=Storage::disk('public')->put('',$request->image);
+        $article->image=$image;
+        $article->titre=$request->titre;
+        $article->texte=$request->texte;
+        $article->user_id=Auth::id();
+        $article->categorie_id=$request->categorie;
+        $article->valide=false;
+        $article->save();
+        $article->tags()->detach();
+        foreach($request->tag as $tag){
+            Tag::where('id',$tag)->first()->articles()->attach($article->id);
+            $article->tags()->attach($tag);
+        }
+        return redirect()->route('article.index');
     }
 
     /**
@@ -115,6 +138,15 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        if(Storage::disk('public')->exists($article->image)){
+            Storage::disk('public')->delete($article->image);
+        }
+        $article->delete();
+        return redirect()->back();
+    }
+    public function search(Request $request){
+        $articles=Article::where('titre','LIKE','%'.$request->titre.'%')->get();
         
+        return view('admin.article.show',compact('articles'));
     }
 }
