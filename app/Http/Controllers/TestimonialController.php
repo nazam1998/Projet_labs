@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialController extends Controller
 {
@@ -14,7 +15,8 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        //
+        $testimonials=Testimonial::all();
+        return view('admin.testimonial.index',compact('testimonials'));
     }
 
     /**
@@ -24,7 +26,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.testimonial.add');
     }
 
     /**
@@ -35,7 +37,23 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image'=>'required|image',
+            'nom'=>'required|string',
+            'prenom'=>'required|string',
+            'fonction'=>'required|string',
+            'texte'=>'required|string',
+        ]);
+
+        $testimonial=new Testimonial();
+        $image=Storage::disk('public')->put('',$request->image);
+        $testimonial->image=$image;
+        $testimonial->nom=$request->nom;
+        $testimonial->prenom=$request->prenom;
+        $testimonial->fonction=$request->fonction;
+        $testimonial->texte=$request->texte;
+        $testimonial->save();
+        return redirect()->route('testimonial.index');
     }
 
     /**
@@ -57,7 +75,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        //
+        return view('admin.testimonial.edit',compact('testimonial'));
     }
 
     /**
@@ -69,7 +87,26 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        $request->validate([
+            'image'=>'required|image',
+            'nom'=>'required|string',
+            'prenom'=>'required|string',
+            'fonction'=>'required|string',
+            'texte'=>'required|string',
+        ]);
+        if($request->hasFile('image')){
+            if(Storage::disk('public')->exists($testimonial->image)){
+                Storage::disk('public')->delete($testimonial->image);
+            }
+            $image=Storage::disk('public')->put('',$request->image);
+            $testimonial->image=$image;
+        }
+        $testimonial->nom=$request->nom;
+        $testimonial->prenom=$request->prenom;
+        $testimonial->fonction=$request->fonction;
+        $testimonial->texte=$request->texte;
+        $testimonial->save();
+        return redirect()->route('testimonial.index');
     }
 
     /**
@@ -80,6 +117,10 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
+        if(Storage::disk('public')->exists($testimonial->image)){
+            Storage::disk('public')->delete($testimonial->image);
+        }
+        $testimonial->delete();
+        return redirect()->back();
     }
 }

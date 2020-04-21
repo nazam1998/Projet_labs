@@ -14,7 +14,8 @@ class FooterController extends Controller
      */
     public function index()
     {
-        //
+        $footer=Footer::all();
+        return view('admin.footer.index',compact('footer'));
     }
 
     /**
@@ -57,7 +58,7 @@ class FooterController extends Controller
      */
     public function edit(Footer $footer)
     {
-        //
+        return view('admin.footer.edit',compact('footer'));
     }
 
     /**
@@ -69,7 +70,14 @@ class FooterController extends Controller
      */
     public function update(Request $request, Footer $footer)
     {
-        //
+        $request->validate([
+            'texte'=>'required|string',
+            'lien'=>'required|string'
+        ]);
+        $footer->texte=$request->texte;
+        $footer->lien=$request->lien;
+        $footer->save();
+        return redirect()->route('footer.index');
     }
 
     /**

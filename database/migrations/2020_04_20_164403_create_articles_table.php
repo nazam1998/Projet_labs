@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('titre');
             $table->string('texte');
             $table->string('image');
+            $table->boolean('valide');
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->on('categories')->references('id')->onDelete('cascade')->onUpdate('cascade');
            

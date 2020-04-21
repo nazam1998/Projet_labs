@@ -14,7 +14,7 @@ class CarouselSeeder extends Seeder
     {
         DB::table('carousels')->insert([
             ['image'=>'01.jpg'],
-            ['image'=>'01.jpg'],
+            ['image'=>'02.jpg'],
         ]);
     }
 }

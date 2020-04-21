@@ -14,7 +14,8 @@ class ServicepageController extends Controller
      */
     public function index()
     {
-        //
+        $servicepage=Servicepage::all();
+        return view('admin.servicepage.index',compact('serviepage'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ServicepageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -57,7 +58,7 @@ class ServicepageController extends Controller
      */
     public function edit(Servicepage $servicepage)
     {
-        //
+        return view('admin.servicepage.edit',compact('servicepage'));
     }
 
     /**
@@ -69,7 +70,14 @@ class ServicepageController extends Controller
      */
     public function update(Request $request, Servicepage $servicepage)
     {
-        //
+        $request->validate([
+            'titre1'=>'required|string',
+            'titre2'=>'required|string',
+        ]);
+        $servicepage->titre1=$request->titre1;
+        $servicepage->titre2=$request->titre2;
+        $servicepage->save();
+        return redirect()->route('servicepage.index');
     }
 
     /**

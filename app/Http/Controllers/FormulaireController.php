@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Header;
+use App\Formulaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
-class HeaderController extends Controller
+class FormulaireController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        //
+        $forms=Formulaire::all();
+        return view('admin.formulaire.index',compact('forms'));       
     }
 
     /**
@@ -24,7 +27,7 @@ class HeaderController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,16 +38,28 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name'=>'required|string',
+            'email'=>'required|email|unique:formulaires',
+            'subject'=>'required|string',
+            'msg'=>'required|string',
+        ]);
+        $form= new Formulaire();
+        $form->name=$request->name;
+        $form->email=$request->email;
+        $form->subject=$request->subject;
+        $form->msg=$request->msg;
+        $form->save();
+        return Redirect::to(URL::previous() . "#contact");
+        }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Header  $header
+     * @param  \App\Formulaire  $formulaire
      * @return \Illuminate\Http\Response
      */
-    public function show(Header $header)
+    public function show(Formulaire $formulaire)
     {
         //
     }
@@ -52,10 +67,10 @@ class HeaderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Header  $header
+     * @param  \App\Formulaire  $formulaire
      * @return \Illuminate\Http\Response
      */
-    public function edit(Header $header)
+    public function edit(Formulaire $formulaire)
     {
         //
     }
@@ -64,10 +79,10 @@ class HeaderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Header  $header
+     * @param  \App\Formulaire  $formulaire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Header $header)
+    public function update(Request $request, Formulaire $formulaire)
     {
         //
     }
@@ -75,10 +90,10 @@ class HeaderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Header  $header
+     * @param  \App\Formulaire  $formulaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Header $header)
+    public function destroy(Formulaire $formulaire)
     {
         //
     }

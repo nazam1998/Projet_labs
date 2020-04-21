@@ -23,7 +23,7 @@
             
         </div>
         <div class="text-center">
-            <a href="#contact" class="site-btn">Browse</a>
+            <a href="#feature" class="site-btn">Browse</a>
         </div>
     </div>
 </div>

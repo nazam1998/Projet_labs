@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Carousel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarouselController extends Controller
 {
@@ -14,7 +15,8 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        //
+        $carousels=Carousel::all();
+        return view('admin.carousel.index',compact('carousels'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.carousel.add');
     }
 
     /**
@@ -35,7 +37,14 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image'=>'required|image'
+        ]);
+        $carousel=new Carousel();
+        $image=Storage::disk('public')->put('',$request->image);
+        $carousel->image=$image;
+        $carousel->save();
+        return redirect()->route('carousel.index');
     }
 
     /**
@@ -57,7 +66,7 @@ class CarouselController extends Controller
      */
     public function edit(Carousel $carousel)
     {
-        //
+        return view('admin.carousel.edit',compact('carousel'));
     }
 
     /**
@@ -69,7 +78,19 @@ class CarouselController extends Controller
      */
     public function update(Request $request, Carousel $carousel)
     {
-        //
+        $request->validate([
+            'image'=>'required|image'
+        ]);
+        if ($request->hasFile('image')) {
+            
+            if (Storage::disk('public')->exists($carousel->image)) {
+                Storage::disk('public')->delete($carousel->image);
+            }
+            $image = Storage::disk('public')->put('', $request->image);
+            $carousel->image = $image;
+        }
+        $carousel->save();
+        return redirect()->route('carousel.index');
     }
 
     /**
@@ -80,6 +101,10 @@ class CarouselController extends Controller
      */
     public function destroy(Carousel $carousel)
     {
-        //
+        if (Storage::disk('public')->exists($carousel->image)) {
+            Storage::disk('public')->delete($carousel->image);
+        }
+        $carousel->delete();
+        return redirect()->back();
     }
 }

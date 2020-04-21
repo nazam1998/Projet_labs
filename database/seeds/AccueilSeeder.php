@@ -20,6 +20,8 @@ class AccueilSeeder extends Seeder
             'text2_about'=>'Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum. Nam convallis vel erat id dictum. Sed ut risus in orci convallis viverra a eget nisi. Aenean pellentesque elit vitae eros dignissim ultrices. Quisque porttitor porttitorlaoreet vel risus et luctus.',
             'titre_service'=>'Get in [the Lab] and see the services',
             'titre_testimonials'=>'What our clients say',
+            'video'=>'https://www.youtube.com/watch?v=JgHfx2v9zOU',
+            'image_video'=>'video.jpg',
             'titre_team'=>'Get in [the Lab] and see the services',
             'titre_promotion'=>'Are you ready to stand out?',
             'text_promotion'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est.',

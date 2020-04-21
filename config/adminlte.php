@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Projet Labs',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => 'Projet <b>Labs</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -213,80 +213,79 @@ return [
             'search' => true,
             'topnav' => true,
         ],
+        
+        ['header' => 'Website Setting'],
         [
-            'text' => 'blog',
+            'text' => 'Accueil',
+            'url'  => 'admin/accueil',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Article',
+            'url'  => 'admin/article',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Blog',
             'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'icon' => 'fas fa-fw fa-home',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Carousel',
+            'url'  => 'admin/carousel',
+            'icon' => 'fas fa-fw fa-home',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Categorie',
+            'url'  => 'admin/categorie',
+            'icon' => 'fas fa-fw fa-home',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text' => 'Contact',
+            'url'  => 'admin/contact',
+            'icon' => 'fas fa-fw fa-home',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
+            'text' => 'Footer',
+            'url'  => 'admin/footer',
+            'icon' => 'fas fa-fw fa-home',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
+            'text' => 'Google',
+            'url'  => 'admin/google',
+            'icon' => 'fas fa-fw fa-home',
         ],
+        [
+            'text' => 'Newsletter',
+            'url'  => 'admin/newsletter',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Role',
+            'url'  => 'admin/role',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Service',
+            'url'  => 'admin/service',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Page Service',
+            'url'  => 'admin/servicepage',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Tag',
+            'url'  => 'admin/tag',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Testimonial',
+            'url'  => 'admin/testimonials',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        
     ],
 
     /*

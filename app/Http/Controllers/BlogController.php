@@ -14,7 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blog=Blog::all();
+        return view('admin.blog.index',compact('blog'));
     }
 
     /**
@@ -57,7 +58,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('admin.blog.edit',compact('blog'));
     }
 
     /**
@@ -69,7 +70,12 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $request->validate([
+            'quote'=>'required|string'
+        ]);
+        $blog->quote=$request->quote;
+        $blog->save();
+        return redirect()->route('blog.index');
     }
 
     /**

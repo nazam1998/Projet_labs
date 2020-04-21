@@ -11,11 +11,5 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tags')->insert([
-            ['tag'=>'Design'],
-            ['tag'=>'Divers'],
-            ['tag'=>'Culture'],
-            ['tag'=>'Agriculture'],
-         ]);
     }
 }

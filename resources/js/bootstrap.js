@@ -20,7 +20,7 @@ try {
  */
 
 window.axios = require('axios');
-
+global.$=global.jQuery=require('./jquery-2.1.4.min');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

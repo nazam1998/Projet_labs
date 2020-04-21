@@ -19,5 +19,11 @@ $factory->define(Article::class, function (Faker $faker) {
         'categorie_id'=>Categorie::inRandomOrder()->first()->id,
         'user_id'=>User::inRandomOrder()->where('role_id','<',4)->first()->id,
         'image'=>$imageName,
+        'valide'=>true
+    ];
+});
+$factory->define(App\Tag::class, function (Faker $faker) {
+    return [
+        'tag' => $faker->unique()->name,
     ];
 });

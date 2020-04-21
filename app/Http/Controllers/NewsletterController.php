@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Newsletter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class NewsletterController extends Controller
 {
@@ -14,19 +16,11 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        //
+        $news=Newsletter::all();
+        return view('admin.newsletter.index',compact('news'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -35,51 +29,14 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'email'=>'required|email|unique:newsletter'
+        ]);
+        $news=new Newsletter();
+        $news->email=$request->email;
+        $news->save();
+        return Redirect::to(URL::previous() . "#newsletter");
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Newsletter $newsletter)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Newsletter $newsletter)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Newsletter $newsletter)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Newsletter  $newsletter
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Newsletter $newsletter)
-    {
-        //
-    }
+    
 }

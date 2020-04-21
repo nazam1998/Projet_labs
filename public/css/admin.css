@@ -1,0 +1,87 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 23/10/2017 13:59
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("/fonts/Flaticon.eot");
+  src: url("/fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/Flaticon.woff") format("woff"),
+       url("/fonts/Flaticon.ttf") format("truetype"),
+       url("/fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("/fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-001-picture:before { content: "\F100"; }
+.flaticon-002-caliper:before { content: "\F101"; }
+.flaticon-003-energy-drink:before { content: "\F102"; }
+.flaticon-004-build:before { content: "\F103"; }
+.flaticon-005-thinking-1:before { content: "\F104"; }
+.flaticon-006-prism:before { content: "\F105"; }
+.flaticon-007-paint:before { content: "\F106"; }
+.flaticon-008-team:before { content: "\F107"; }
+.flaticon-009-idea-3:before { content: "\F108"; }
+.flaticon-010-diamond:before { content: "\F109"; }
+.flaticon-011-compass:before { content: "\F10A"; }
+.flaticon-012-cube:before { content: "\F10B"; }
+.flaticon-013-puzzle:before { content: "\F10C"; }
+.flaticon-014-magic-wand:before { content: "\F10D"; }
+.flaticon-015-book:before { content: "\F10E"; }
+.flaticon-016-vision:before { content: "\F10F"; }
+.flaticon-017-notebook:before { content: "\F110"; }
+.flaticon-018-laptop-1:before { content: "\F111"; }
+.flaticon-019-coffee-cup:before { content: "\F112"; }
+.flaticon-020-creativity:before { content: "\F113"; }
+.flaticon-021-thinking:before { content: "\F114"; }
+.flaticon-022-branding:before { content: "\F115"; }
+.flaticon-023-flask:before { content: "\F116"; }
+.flaticon-024-idea-2:before { content: "\F117"; }
+.flaticon-025-imagination:before { content: "\F118"; }
+.flaticon-026-search:before { content: "\F119"; }
+.flaticon-027-monitor:before { content: "\F11A"; }
+.flaticon-028-idea-1:before { content: "\F11B"; }
+.flaticon-029-sketchbook:before { content: "\F11C"; }
+.flaticon-030-computer:before { content: "\F11D"; }
+.flaticon-031-scheme:before { content: "\F11E"; }
+.flaticon-032-explorer:before { content: "\F11F"; }
+.flaticon-033-museum:before { content: "\F120"; }
+.flaticon-034-cactus:before { content: "\F121"; }
+.flaticon-035-smartphone:before { content: "\F122"; }
+.flaticon-036-brainstorming:before { content: "\F123"; }
+.flaticon-037-idea:before { content: "\F124"; }
+.flaticon-038-graphic-tool-1:before { content: "\F125"; }
+.flaticon-039-vector:before { content: "\F126"; }
+.flaticon-040-rgb:before { content: "\F127"; }
+.flaticon-041-graphic-tool:before { content: "\F128"; }
+.flaticon-042-typography:before { content: "\F129"; }
+.flaticon-043-sketch:before { content: "\F12A"; }
+.flaticon-044-paint-bucket:before { content: "\F12B"; }
+.flaticon-045-video-player:before { content: "\F12C"; }
+.flaticon-046-laptop:before { content: "\F12D"; }
+.flaticon-047-artificial-intelligence:before { content: "\F12E"; }
+.flaticon-048-abstract:before { content: "\F12F"; }
+.flaticon-049-projector:before { content: "\F130"; }
+.flaticon-050-satellite:before { content: "\F131"; }table td,
+table th {
+  padding: 10px;
+}
+
+table img {
+  width: 100px;
+}
+

@@ -22,6 +22,8 @@ class CreateAccueilsTable extends Migration
             $table->text('text1_about');
             $table->text('text2_about');
             $table->string('titre_service');
+            $table->string('video');
+            $table->string('image_video');
             $table->string('titre_testimonials');
             $table->string('titre_team');
             $table->string('titre_promotion');
