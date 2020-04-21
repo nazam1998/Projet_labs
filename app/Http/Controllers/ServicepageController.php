@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ServicepageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class ServicepageController extends Controller
     public function index()
     {
         $servicepage=Servicepage::all();
-        return view('admin.servicepage.index',compact('serviepage'));
+        return view('admin.servicepage.index',compact('servicepage'));
     }
 
     /**

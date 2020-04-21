@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +29,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $icone = [
+        $icones = [
             [
                 'class' => 'flaticon-050-satellite',
                 'code' => 'f131',
@@ -44,55 +48,55 @@ class ServiceController extends Controller
             ],
             [
                 'class' => 'flaticon-035-smartphone',
-                 'code' => "\f122"
+                 'code' => "f122"
             ],
             [
                 'class' => 'flaticon-036-brainstorming',
-                 'code' => "\f123"
+                 'code' => "f123"
             ],
             [
                 'class' => 'flaticon-037-idea',
-                 'code' => "\f124"
+                 'code' => "f124"
             ],
             [
                 'class' => 'flaticon-038-graphic-tool-1',
-                 'code' => "\f125"
+                 'code' => "f125"
             ],
             [
                 'class' => 'flaticon-039-vector',
-                 'code' => "\f126"
+                 'code' => "f126"
             ],
             [
                 'class' => 'flaticon-040-rgb',
-                 'code' => "\f127"
+                 'code' => "f127"
             ],
             [
                 'class' => 'flaticon-041-graphic-tool',
-                 'code' => "\f128"
+                 'code' => "f128"
             ],
             [
                 'class' => 'flaticon-042-typography',
-                 'code' => "\f129"
+                 'code' => "f129"
             ],
             [
                 'class' => 'flaticon-043-sketch',
-                 'code' => "\f12a"
+                 'code' => "f12a"
             ],
             [
                 'class' => 'flaticon-044-paint-bucket',
-                 'code' => "\f12b"
+                 'code' => "f12b"
             ],
             [
                 'class' => 'flaticon-045-video-player',
-                 'code' => "\f12c"
+                 'code' => "f12c"
             ],
             [
                 'class' => 'flaticon-046-laptop',
-                 'code' => "\f12d"
+                 'code' => "f12d"
             ],
             [
                 'class' => 'flaticon-047-artificial-intelligence',
-                 'code' => "\f12e"
+                 'code' => "f12e"
             ],
         ];
         return view('admin.service.add', compact('icones'));
@@ -138,7 +142,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        $icone = [
+        $icones = [
             [
                 'class' => 'flaticon-050-satellite',
                 'code' => 'f131',
@@ -157,58 +161,58 @@ class ServiceController extends Controller
             ],
             [
                 'class' => 'flaticon-035-smartphone',
-                 'code' => "\f122"
+                 'code' => "f122"
             ],
             [
                 'class' => 'flaticon-036-brainstorming',
-                 'code' => "\f123"
+                 'code' => "f123"
             ],
             [
                 'class' => 'flaticon-037-idea',
-                 'code' => "\f124"
+                 'code' => "f124"
             ],
             [
                 'class' => 'flaticon-038-graphic-tool-1',
-                 'code' => "\f125"
+                 'code' => "f125"
             ],
             [
                 'class' => 'flaticon-039-vector',
-                 'code' => "\f126"
+                 'code' => "f126"
             ],
             [
                 'class' => 'flaticon-040-rgb',
-                 'code' => "\f127"
+                 'code' => "f127"
             ],
             [
                 'class' => 'flaticon-041-graphic-tool',
-                 'code' => "\f128"
+                 'code' => "f128"
             ],
             [
                 'class' => 'flaticon-042-typography',
-                 'code' => "\f129"
+                 'code' => "f129"
             ],
             [
                 'class' => 'flaticon-043-sketch',
-                 'code' => "\f12a"
+                 'code' => "f12a"
             ],
             [
                 'class' => 'flaticon-044-paint-bucket',
-                 'code' => "\f12b"
+                 'code' => "f12b"
             ],
             [
                 'class' => 'flaticon-045-video-player',
-                 'code' => "\f12c"
+                 'code' => "f12c"
             ],
             [
                 'class' => 'flaticon-046-laptop',
-                 'code' => "\f12d"
+                 'code' => "f12d"
             ],
             [
                 'class' => 'flaticon-047-artificial-intelligence',
-                 'code' => "\f12e"
+                 'code' => "f12e"
             ],
         ];
-        return view('admin.service.add', compact('icones',compact('service')));
+        return view('admin.service.edit', compact('icones','service'));
     }
 
     /**

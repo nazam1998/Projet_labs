@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 
 @section('title')
-Ajouter Article
+Editer Testimonial
 @endsection
 
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Quick Example</h3>
+        <h3 class="card-title">Editer Testimonial</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form role="form" action="{{route('article.update',$article)}}" method="POST" enctype="multipart/form-data">
+    <form role="form" action="{{route('testimonial.update',$testimonial)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card-body">
@@ -20,14 +20,14 @@ Ajouter Article
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="titre" class="form-control" id="titre" placeholder="Enter a Title">
+                <input type="text" name="titre" class="form-control" id="titre" value="{{old('titre',$testimonial->titre)}}" placeholder="Enter a Title">
             </div>
             <div class="form-group">
                 <label for="titre">Texte</label>
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <textarea type="text" name="texte" class="form-control" id="titre" name="texte"></textarea>
+                <textarea type="text" name="texte" class="form-control" id="titre" name="texte">{{old('texte',$testimonial->texte)}}</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Image</label>
@@ -41,30 +41,6 @@ Ajouter Article
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Catégorie</label>
-                @error('categorie')
-                <p class="alert alert-danger">{{$message}}</p>
-                @enderror
-                <select class="form-control" name="categorie">
-                    @foreach ($categories as $item)
-                <option value="{{$item->id}}">{{$item->categorie}}</option>
-                    @endforeach
-                </select>
-              </div>
-            <div class="row">
-                @foreach ($tags as $item)
-                <div class="form-check col-3">
-                    @error('tag')
-                <p class="alert alert-danger">{{$message}}</p>
-                @enderror
-                    <input type="checkbox" value="{{$item->id}}" class="form-check-input" id="exampleCheck1" name="tag[]">
-                    <label class="form-check-label" for="exampleCheck1">{{$item->tag}}</label>
-                </div>
-                @endforeach
-            </div>
-
-
             <!-- /.card-body -->
 
             <div class="card-footer">

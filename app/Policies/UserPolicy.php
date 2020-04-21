@@ -12,4 +12,8 @@ class UserPolicy
     public function admin (User $user){
         return $user->role_id==1;
     }
+
+    public function redac (User $user){
+        return $user->role_id==1;
+    }
 }

@@ -20,7 +20,6 @@ Route::get('/contact','WelcomeController@contact')->name('contact');
 Route::get('/post/{id}','WelcomeController@post')->name('post');
 Route::post('newsletter','NewsletterController@store')->name('storenews');
 Route::post('admin/newsletter','NewsletterController@index')->name('newsletter.index');
-Route::resource('admin/about', 'AboutController');
 Route::resource('admin/accueil', 'AccueilController');
 Route::resource('admin/article', 'ArticleController');
 Route::resource('admin/blog', 'BlogController');
