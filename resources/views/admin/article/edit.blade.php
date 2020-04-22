@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
 @section('title')
-Ajouter Article
+Editer Article
 @endsection
 
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Quick Example</h3>
+        <h3 class="card-title">Editer Article</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
@@ -20,14 +20,14 @@ Ajouter Article
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="titre" class="form-control" id="titre" placeholder="Enter a Title">
+                <input type="text" name="titre" class="form-control" id="titre" value="{{old('titre',$article->titre)}}">
             </div>
             <div class="form-group">
                 <label for="titre">Texte</label>
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <textarea type="text" name="texte" class="form-control" id="titre" name="texte"></textarea>
+                <textarea type="text" name="texte" class="form-control" id="titre" name="texte">{{old('texte',$article->texte)}}</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Image</label>
@@ -48,17 +48,28 @@ Ajouter Article
                 @enderror
                 <select class="form-control" name="categorie">
                     @foreach ($categories as $item)
-                <option value="{{$item->id}}">{{$item->categorie}}</option>
+                    @if ($item->id==$article->categorie_id)
+                        
+                    <option selected value="{{$item->id}}">{{$item->categorie}}</option>
+                    @else 
+                    <option value="{{$item->id}}">{{$item->categorie}}</option>
+                    @endif
                     @endforeach
                 </select>
               </div>
             <div class="row">
                 @foreach ($tags as $item)
+
                 <div class="form-check col-3">
                     @error('tag')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                    <input type="checkbox" value="{{$item->id}}" class="form-check-input" id="exampleCheck1" name="tag[]">
+                @if($article->tags->contains($item->id))
+                <input checked type="checkbox" value="{{$item->id}}" class="form-check-input" name="tag[]" >
+                @else 
+                <input type="checkbox" value="{{$item->id}}" class="form-check-input" name="tag[]" >
+                
+                @endif
                     <label class="form-check-label" for="exampleCheck1">{{$item->tag}}</label>
                 </div>
                 @endforeach

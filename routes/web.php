@@ -19,12 +19,17 @@ Route::get('/blog','WelcomeController@blog')->name('blog');
 Route::get('/contact','WelcomeController@contact')->name('contact');
 Route::get('/post/{id}','WelcomeController@post')->name('post');
 Route::post('newsletter','NewsletterController@store')->name('storenews');
-Route::post('admin/newsletter','NewsletterController@index')->name('newsletter.index');
-
+Route::get('admin/newsletter','NewsletterController@index')->name('newsletter.index');
+Route::get('admin/formulaire','FormulaireController@index')->name('formulaire.index');
+Route::post('formulaire','FormulaireController@store')->name('storemsg');
+Route::get('admin/comment','CommentController@index')->name('comment');
+Route::post('comment/{article}','CommentController@store')->name('comment.store');
 
 Route::resource('admin/accueil', 'AccueilController');
 
 Route::post('search/articles','ArticleController@search')->name('search');
+Route::get('search/articlesByTag/{tag}','ArticleController@searchTag')->name('searchTag');
+Route::get('search/articlesByCategorie/{categorie}','ArticleController@searchCategorie')->name('searchCat');
 Route::resource('admin/article', 'ArticleController');
 
 Route::resource('admin/blog', 'BlogController');
@@ -33,7 +38,6 @@ Route::resource('admin/carousel', 'CarouselController');
 
 Route::resource('admin/categorie', 'CategorieController');
 
-Route::resource('admin/comment', 'CommentController');
 
 Route::resource('admin/contact', 'ContactController');
 
@@ -44,6 +48,8 @@ Route::resource('admin/google', 'GoogleController');
 Route::resource('admin/role', 'RoleController');
 
 Route::resource('admin/service', 'ServiceController');
+
+Route::resource('admin/user', 'UserController');
 
 Route::resource('admin/servicepage', 'ServicepageController');
 

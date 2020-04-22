@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Comment;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     /**
@@ -33,9 +34,18 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Article $article)
     {
-        //
+        $request->validate([
+            'comment'=>'required|string'
+        ]);
+
+        $comment= new Comment();
+        $comment->comment=$request->comment;
+        $comment->article_id=$article->id;
+        $comment->user_id=Auth::id();
+        $comment->save();
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +90,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return redirect()->back();
     }
 }

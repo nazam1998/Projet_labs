@@ -12,6 +12,7 @@ use App\Contact;
 use App\Footer;
 use App\Google;
 use App\Service;
+use App\Servicepage;
 use App\Tag;
 use App\Testimonial;
 use App\User;
@@ -38,10 +39,11 @@ class WelcomeController extends Controller
         $lastservices=Service::latest()->take(9)->get();
         $accueil=Accueil::find(1);
         $services=Service::latest()->take(6)->get();
+        $titres=Servicepage::find(1);
         $articles=Article::where('valide',true)->latest()->take(3)->get();
         $footer=Footer::find(1);
         $contact=Contact::find(1);
-        return view('service',compact('lastservices','services','accueil','contact','footer','articles'));
+        return view('service',compact('lastservices','services','accueil','contact','footer','articles','titres'));
     
     }
     public function blog(){

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Formulaire;
+use App\Mail\RegisterMail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FormulaireController extends Controller
 {
@@ -20,8 +21,8 @@ class FormulaireController extends Controller
      */
     public function index()
     {
-        $forms=Formulaire::all();
-        return view('admin.formulaire.index',compact('forms'));       
+        $forms = Formulaire::all();
+        return view('admin.formulaire.index', compact('forms'));
     }
 
     /**
@@ -31,7 +32,6 @@ class FormulaireController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -43,19 +43,25 @@ class FormulaireController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|string',
-            'email'=>'required|email|unique:formulaires',
-            'subject'=>'required|string',
-            'msg'=>'required|string',
+            'name' => Auth::guest() ? 'required|string' : '',
+            'email' => Auth::guest() ? 'required|email|unique:formulaires':'',
+            'subject' => 'required|string',
+            'message' => 'required|string',
         ]);
-        $form= new Formulaire();
-        $form->name=$request->name;
-        $form->email=$request->email;
-        $form->subject=$request->subject;
-        $form->msg=$request->msg;
-        $form->save();
-        return Redirect::to(URL::previous() . "#contact");
+        $form = new Formulaire();
+        if (Auth::guest()) {
+            $form->name = $request->name;
+            $form->email = $request->email;
+        }else{
+            $form->name=Auth::user()->nom;
+            $form->email=Auth::user()->email;
         }
+        $form->subject = $request->subject;
+        $form->msg = $request->message;
+        $form->save();
+        Mail::to($form->email)->send(new RegisterMail($form->name, $form->msg));
+        return redirect()->to(url()->previous() . '#contact')->with('msg', 'Votre message a été envoyé avec succès');
+    }
 
     /**
      * Display the specified resource.

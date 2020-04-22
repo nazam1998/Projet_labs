@@ -213,6 +213,11 @@ return [
             'search' => true,
             'topnav' => true,
         ],
+        [
+            'text'=>'Retourner au site',
+            'url'=>'/',
+            'icon'=>'fas fa-undo'
+        ],
         
         ['header' => 'Website Setting'],
         [
@@ -223,67 +228,77 @@ return [
         [
             'text' => 'Article',
             'url'  => 'admin/article',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-newspaper',
         ],
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-blog',
         ],
         [
             'text' => 'Carousel',
             'url'  => 'admin/carousel',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-images',
         ],
         [
             'text' => 'Categorie',
             'url'  => 'admin/categorie',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-shapes',
         ],
         [
             'text' => 'Contact',
             'url'  => 'admin/contact',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-phone-alt',
         ],
         [
             'text' => 'Footer',
             'url'  => 'admin/footer',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-copyright',
         ],
         [
             'text' => 'Google',
             'url'  => 'admin/google',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fab fa-fw fa-google',
         ],
         [
             'text' => 'Newsletter',
             'url'  => 'admin/newsletter',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-envelope',
+        ],
+        [
+            'text' => 'Messages',
+            'url'  => 'admin/formulaire',
+            'icon' => 'fas fa-fw fa-envelope-square',
         ],
         [
             'text' => 'Role',
             'url'  => 'admin/role',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-user-tag',
         ],
         [
             'text' => 'Service',
             'url'  => 'admin/service',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-cogs',
         ],
         [
             'text' => 'Page Service',
             'url'  => 'admin/servicepage',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fab fa-fw fa-servicestack',
+        ],
+        [
+            'text' => 'Users',
+            'url'  => 'admin/user',
+            'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text' => 'Tag',
             'url'  => 'admin/tag',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-tags',
         ],
         [
             'text' => 'Testimonial',
             'url'  => 'admin/testimonials',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-comment',
         ],
         
     ],

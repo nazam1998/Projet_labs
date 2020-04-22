@@ -38,7 +38,7 @@ class NewsletterController extends Controller
         $news->email=$request->email;
         $news->save();
         Mail::to($news->email)->send(new NewsMail($news->email));
-        return Redirect::to(URL::previous() . "#newsletter")->with('msg','Merci pour votre inscription');
+        return redirect()->to(url()->previous() . '#newsletter')->with('msgnews', 'Merci pour votre insciption');
         }
 
     

@@ -19,14 +19,14 @@ Ajouter Article
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="titre" class="form-control" id="titre" placeholder="Enter a Title">
+            <input type="text" name="titre" class="form-control" id="titre" value="{{old('titre')}}" placeholder="Enter a Title">
             </div>
             <div class="form-group">
                 <label for="titre">Texte</label>
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <textarea type="text" name="texte" class="form-control" id="titre" name="texte"></textarea>
+                <textarea type="text" name="texte" class="form-control" id="titre" name="texte">{{old('texte')}}</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Image</label>

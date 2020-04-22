@@ -15,16 +15,39 @@
 				</div>
 				<!-- contact form -->
 				<div class="col-md-6 col-pull">
-					<form class="form-class" id="con_form">
+					@if (session()->has('msg'))
+				<p class="alert alert-success">{{session('msg')}}</p>
+					@endif
+				<form class="form-class" id="con_form" method="POST" action="{{route('storemsg')}}">
+					@csrf
 						<div class="row">
+							@guest
 							<div class="col-sm-6">
+								@error('name')
+								<p class="alert alert-danger">{{$message}}</p>
+								@enderror
 								<input type="text" name="name" placeholder="Your name">
 							</div>
 							<div class="col-sm-6">
+								
+								@error('email')
+								<p class="alert alert-danger">{{$message}}</p>
+								@enderror
+								
 								<input type="text" name="email" placeholder="Your email">
+							
 							</div>
+							@endguest
 							<div class="col-sm-12">
+								
+								@error('subject')
+								<p class="alert alert-danger">{{$message}}</p>
+								@enderror
 								<input type="text" name="subject" placeholder="Subject">
+								
+								@error('message')
+								<p class="alert alert-danger">{{$message}}</p>
+								@enderror
 								<textarea name="message" placeholder="Message"></textarea>
 								<button class="site-btn">send</button>
 							</div>

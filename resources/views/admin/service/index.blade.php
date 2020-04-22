@@ -31,7 +31,11 @@
                     <td>{{$item->description}}</td>
                 <td>
                     <a href="{{route('service.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
-                <a href="{{route('service.destroy',$item)}}" class="btn btn-danger">Supprimer</a>
+                <form action="{{route('service.destroy',$item)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
                 </td>
                 </tr>
                 @endforeach

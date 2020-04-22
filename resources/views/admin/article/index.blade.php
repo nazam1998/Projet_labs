@@ -40,6 +40,9 @@
                     </td>
                     <td>{{$item->user->nom.' '.$item->user->prenom}}</td>
                 <td>
+                    @if (!$item->valide)
+                    <a class="btn btn-success" href="{{route('article.show',$item)}}">Valider</a>
+                    @endif
                     <a href="{{route('article.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
                 <form action="{{route('article.destroy',$item)}}" method="post">
                     @csrf

@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Accueil;
+use App\Article;
+use App\Blog;
+use App\Categorie;
+use App\Contact;
+use App\Footer;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -55,10 +61,7 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.

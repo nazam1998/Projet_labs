@@ -8,17 +8,25 @@
                     <div class="post-thumbnail">
                         <img src="{{asset('storage/'.$article->image)}}" alt="">
                         <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
+							<h2>{{$article->created_at->format('d')}}</h2>
+								<h3>{{\Illuminate\Support\Str::limit(date('F',strtotime($article->created_at)), 3, $end='')}} {{$article->created_at->format('Y')}}</h3>
+							</div>
                     </div>
                     <div class="post-content">
                         <h2 class="post-title">{{$article->titre}}</h2>
                         <div class="post-meta">
                             <a href="">{{$article->categorie->categorie}}</a>
-                            <a href="">@foreach ($article->tags as $item)
+                            <a href="">
+                            @foreach ($article->tags as $index=>$item)
+                                @if ($index!=count($article->tags)-1)
                                 {{$item->tag}},
-                                @endforeach</a>
+
+                                @else
+                                {{$item->tag}}
+
+                                @endif
+                                @endforeach
+                            </a>
                             <a href="">{{$article->comments->count()}}</a>
                         </div>
                         <p>{{$article->texte}}</p>
@@ -57,12 +65,16 @@
                     <div class="row">
                         <div class="col-md-9 comment-from">
                             <h2>Leave a comment</h2>
-                            <form class="form-class">
+                        <form class="form-class" method="POST" action="{{route('comment.store',$article)}}">
+                                @csrf
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <input type="text" name="subject" placeholder="Subject">
-                                        <textarea name="message" placeholder="Message"></textarea>
-                                        <button class="site-btn">send</button>
+                                        <textarea name="comment" placeholder="Message"></textarea>
+                                        @auth
+                                        <button class="site-btn" type="submit">send</button>
+                                            @else
+                                            <button disabled="disabled">send</button>
+                                        @endauth
                                     </div>
                                 </div>
                             </form>

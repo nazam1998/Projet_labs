@@ -24,6 +24,6 @@ $factory->define(Article::class, function (Faker $faker) {
 });
 $factory->define(App\Tag::class, function (Faker $faker) {
     return [
-        'tag' => $faker->unique()->name,
+        'tag' => $faker->unique()->word,
     ];
 });
