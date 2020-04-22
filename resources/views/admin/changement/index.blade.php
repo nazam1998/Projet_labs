@@ -17,7 +17,7 @@
                     <th style="width: 10px">#</th>
                     <th>Image</th>
                     <th>Nom</th>
-                    <th>Role</th>
+                    <th>Prenom</th>
                     <th>Description</th>
                     <th>Action</th>
                 </tr>
@@ -28,10 +28,14 @@
                     <td>{{$item->id}}</td>
                     <td><img src="{{asset('storage/'.$item->image)}}" alt=""></td>
                     <td>{{$item->nom}}</td>
-                    <td>{{$item->role->role}}</td>
+                    <td>{{$item->prenom}}</td>
                     <td>{{$item->description}}</td>
                 <td>
-                    <a href="{{route('updateChangement',$item)}}" class="btn btn-warning my-2">Editer</a>
+                <form action="{{route('updateChangement',$item)}}" method="post">
+                     @csrf
+                     <button type="submit" class="btn btn-success">Valider</button>
+                </form>
+                    <a href="{{route('deleteChangement',$item)}}" class="btn btn-danger my-2">Décliner</a>
                 </td>
                 </tr>
                 @endforeach

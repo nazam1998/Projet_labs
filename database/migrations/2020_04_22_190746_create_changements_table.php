@@ -17,6 +17,7 @@ class CreateChangementsTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
+            $table->string('email');
             $table->string('image');
             $table->string('description');
             $table->string('password');

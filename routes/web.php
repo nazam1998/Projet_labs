@@ -72,11 +72,12 @@ Auth::routes();
 
 // Profile
 Route::get('profile','ProfileController@index')->name('profile');
-Route::get('profile/submit','ProfileController@update')->name('updateProfile');
+Route::post('profile/submit','ProfileController@update')->name('updateProfile');
 
 // Changement
 Route::get('admin/changement','ChangementController@index')->name('changement');
-Route::get('changement/{changement}','ChangementController@update')->name('updateChangement');
+Route::post('admin/changement/{changement}','ChangementController@store')->name('updateChangement');
+Route::get('admin/changement/{changement}/delete','ChangementController@destroy')->name('deleteChangement');
 
 // Home
 Route::get('/home', 'HomeController@index')->name('home');

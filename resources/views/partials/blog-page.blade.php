@@ -19,9 +19,9 @@
 	                        <div class="post-meta">
 	                            <a href="">{{$item->categorie->categorie}}</a>
 	                            <a href="">
-	                            @foreach ($item->tags->shuffle()->take(3) as $index=>$tag)
+	                                @foreach ($item->tags->shuffle()->take(3) as $index=>$tag)
 	                                {{$tag->tag}},
-									@endforeach
+	                                @endforeach
 	                            </a>
 	                            <a href="">{{$item->comments->count()}} comment(s)</a>
 	                        </div>
@@ -31,12 +31,12 @@
 	                </div>
 	                @endforeach
 	                <!-- Pagination -->
-	                
+
 
 	                <div class="page-pagination">
 	                    {{$articles->links()}}
 	                </div>
-	                
+
 	            </div>
 	            <!-- Sidebar area -->
 	            <div class="col-md-4 col-sm-5 sidebar">
@@ -53,12 +53,12 @@
 	                    <h2 class="widget-title">Categories</h2>
 	                    <ul>
 	                        @foreach ($categories as $item)
-						<li>
-							<form action="{{route('searchCat',$item)}}" method="post">
-							@csrf
-							<button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
-						</form>
-					</li>
+	                        <li>
+	                            <form action="{{route('searchCat',$item)}}" method="post">
+	                                @csrf
+	                                <button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
+	                            </form>
+	                        </li>
 	                        @endforeach
 	                    </ul>
 	                </div>
@@ -69,10 +69,10 @@
 	                        @foreach ($tags as $item)
 
 	                        <li>
-								<form action="{{route('searchTag',$item)}}" method="post">
-									@csrf
-									<button type="submit" class="btn btn-transparent">{{$item->tag}}</button>	
-							</li>
+	                            <form action="{{route('searchTag',$item)}}" method="post">
+	                                @csrf
+	                                <button type="submit" class="btn btn-transparent">{{$item->tag}}</button>
+	                        </li>
 	                        @endforeach
 	                    </ul>
 	                </div>

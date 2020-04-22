@@ -51,7 +51,7 @@ class ChangementController extends Controller
         $user->image=$changement->image;
         $user->save();
         $changement->delete();
-        return redirect()->back();
+        return redirect()->route('changement');
     }
 
     /**
