@@ -115,11 +115,13 @@ class ServiceController extends Controller
             'logo'=>'required|string',
             'titre'=>'required|string',
             'description'=>'required|string',
-        ]);
+            'color'=>['required',"regex:/^(#(?:[0-9a-f]{2}){2,4}|#[0-9a-f]{3}|(?:rgba?|hsla?)\((?:\d+%?(?:deg|rad|grad|turn)?(?:,|\s)+){2,3}[\s\/]*[\d\.]+%?\))$/i"],
+            ]);
         $service=new Service();
         $service->logo=$request->logo;
         $service->titre=$request->titre;
         $service->description=$request->description;
+        $service->color=$request->color;
         $service->save();
         return redirect()->route('service.index');
     }
@@ -229,10 +231,12 @@ class ServiceController extends Controller
             'logo'=>'required|string',
             'titre'=>'required|string',
             'description'=>'required|string',
+            'color'=>['required',"regex:/^(#(?:[0-9a-f]{2}){2,4}|#[0-9a-f]{3}|(?:rgba?|hsla?)\((?:\d+%?(?:deg|rad|grad|turn)?(?:,|\s)+){2,3}[\s\/]*[\d\.]+%?\))$/i"],
         ]);
         $service->logo=$request->logo;
         $service->titre=$request->titre;
         $service->description=$request->description;
+        $service->color=$request->color;
         $service->save();
         return redirect()->route('service.index');
     }

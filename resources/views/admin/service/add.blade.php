@@ -22,6 +22,13 @@ Ajouter Service
             <input type="text" name="titre" class="form-control" id="titre" value="{{old('titre')}}" placeholder="Enter a Title">
             </div>
             <div class="form-group">
+                <label for="titre">Color</label>
+                @error('color')
+                <p class="alert alert-danger">{{$message}}</p>
+                @enderror
+            <input type="color" name="color" class="form-control" id="color" value="{{old('color')}}">
+            </div>
+            <div class="form-group">
                 <label for="description">Description</label>
                 @error('description')
                 <p class="alert alert-danger">{{$message}}</p>

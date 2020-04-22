@@ -19,11 +19,14 @@
                 <a href="{{route('login')}}">Login/Register</a>
             </li>
             @else
-            @can('admin',App\User::class)
+            {{-- @can('admin',App\User::class) --}}
             <li>
                 <a href="{{route('home')}}">Back Office</a>
             </li>
-            @endcan
+            {{-- @endcan --}}
+            <li>
+                <a href="{{route('profile')}}">Profile</a>
+            </li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                 Log Out

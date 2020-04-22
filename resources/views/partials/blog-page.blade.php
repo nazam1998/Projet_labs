@@ -19,13 +19,8 @@
 	                        <div class="post-meta">
 	                            <a href="">{{$item->categorie->categorie}}</a>
 	                            <a href="">
-	                            @foreach ($item->tags->shuffle() as $index=>$tag)
-	                                @if ($index!=count($item->tags)-1)
+	                            @foreach ($item->tags->shuffle()->take(3) as $index=>$tag)
 	                                {{$tag->tag}},
-	                                @else
-	                                {{$tag->tag}}
-
-	                                @endif
 									@endforeach
 	                            </a>
 	                            <a href="">{{$item->comments->count()}} comment(s)</a>
@@ -36,12 +31,12 @@
 	                </div>
 	                @endforeach
 	                <!-- Pagination -->
-	                @if (\Request::route()->getName()=='blog')
+	                
 
 	                <div class="page-pagination">
 	                    {{$articles->links()}}
 	                </div>
-	                @endif
+	                
 	            </div>
 	            <!-- Sidebar area -->
 	            <div class="col-md-4 col-sm-5 sidebar">

@@ -24,6 +24,13 @@ Editer Service
                     value="{{old('titre',$service->titre)}}">
             </div>
             <div class="form-group">
+                <label for="titre">Color</label>
+                @error('color')
+                <p class="alert alert-danger">{{$message}}</p>
+                @enderror
+            <input type="color" name="color" class="form-control" id="color" value="{{old('color',$service->color)}}">
+            </div>
+            <div class="form-group">
                 <label for="description">Description</label>
                 @error('description')
                 <p class="alert alert-danger">{{$message}}</p>

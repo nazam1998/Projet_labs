@@ -31,6 +31,7 @@ Route::post('formulaire','FormulaireController@store')->name('storemsg');
 // Comment
 Route::get('admin/comment','CommentController@index')->name('comment');
 Route::post('comment/{article}','CommentController@store')->name('comment.store');
+Route::delete('comment/{comment}/delete','CommentController@destroy')->name('comment.destroy');
 
 // Welcome Page
 Route::resource('admin/accueil', 'AccueilController');
@@ -39,7 +40,7 @@ Route::resource('admin/accueil', 'AccueilController');
 Route::post('search/articles','ArticleController@search')->name('search');
 Route::post('search/articlesByTag/{tag}','ArticleController@searchTag')->name('searchTag');
 Route::post('search/articlesByCategorie/{categorie}','ArticleController@searchCategorie')->name('searchCat');
-
+// Ressource
 Route::resource('admin/article', 'ArticleController');
 
 Route::resource('admin/blog', 'BlogController');
@@ -69,4 +70,13 @@ Route::resource('admin/testimonial', 'TestimonialController');
 
 Auth::routes();
 
+// Profile
+Route::get('profile','ProfileController@index')->name('profile');
+Route::get('profile/submit','ProfileController@update')->name('updateProfile');
+
+// Changement
+Route::get('admin/changement','ChangementController@index')->name('changement');
+Route::get('changement/{changement}','ChangementController@update')->name('updateChangement');
+
+// Home
 Route::get('/home', 'HomeController@index')->name('home');

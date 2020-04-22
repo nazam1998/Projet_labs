@@ -17,14 +17,11 @@
                         <div class="post-meta">
                             <a href="">{{$article->categorie->categorie}}</a>
                             <a href="">
-                            @foreach ($article->tags as $index=>$item)
-                                @if ($index!=count($article->tags)-1)
-                                {{$item->tag}},
-
-                                @else
-                                {{$item->tag}}
-
-                                @endif
+                            @foreach ($article->tags->shuffle()->take(3) as $index=>$item)
+                            @if ($index<3)
+                                
+                            {{$item->tag}},
+                            @endif
                                 @endforeach
                             </a>
                             <a href="">{{$article->comments->count()}} comment(s)</a>
@@ -47,16 +44,23 @@
                         <h2>Comments ({{$article->comments->count()}})</h2>
                         <ul class="comment-list">
                             @foreach ($comments as $item)
-
+                            
                             <li>
                                 
                                 <div class="avatar">
                                     <img src="{{asset('storage/'.$item->user->image)}}" alt="">
                                 </div>
                                 <div class="commetn-text">
-                                    <h3>{{$item->user->nom.' '.$item->user->prenom}} | {{$article->created_at->format('d')}} {{\Illuminate\Support\Str::limit(date('F',strtotime($article->created_at)), 3, $end='')}}, {{$article->created_at->format('Y')}} | {{$article->created_at->format('H:i:s')}}  
+                                    <h3>{{$item->user->nom.' '.$item->user->prenom}} | {{$item->created_at->format('d')}} {{\Illuminate\Support\Str::limit(date('F',strtotime($item->created_at)), 3, $end='')}}, {{$item->created_at->format('Y')}} | {{$item->created_at->format('H:i:s')}}  
                                         
                                     <p>{{$item->comment}}</p>
+                                    @can('delete',$item, App\Comment::class)
+                                    <form action="{{route('comment.destroy',$item)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" >Delete</button>
+                                    </form>
+                                    @endcan
                                 </div>
                             </li>
                             @endforeach

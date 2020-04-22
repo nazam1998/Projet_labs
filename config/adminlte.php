@@ -222,7 +222,7 @@ return [
                     'text' => 'Role',
                     'url'  => 'admin/role',
                     'icon' => 'fas fa-fw fa-user-tag',
-                    // 'can'=>'admin'
+                    'can'=>'admin',
                 ],
                 [
                     'text' => 'Users',
@@ -298,6 +298,12 @@ return [
             'text' => 'Carousel',
             'url'  => 'admin/carousel',
             'icon' => 'fas fa-fw fa-images',
+            // 'can'=>'admin'
+        ],
+        [
+            'text' => 'Changement',
+            'url'  => 'admin/changement',
+            'icon' => 'fas fa-fw fa-save',
             // 'can'=>'admin'
         ],
 

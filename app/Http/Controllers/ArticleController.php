@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Storage;
 class ArticleController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['search','searchTag','searchCategorie']);
-        $this->middleware('articlemake')->only('create','store');
-        $this->middleware('articleedit')->only('update','edit','destroy');
+        // $this->middleware('auth')->except(['search','searchTag','searchCategorie']);
+        // $this->middleware('articlemake')->only('create','store');
+        // $this->middleware('articleedit')->only('update','edit','destroy');
     }
     
         
@@ -59,7 +59,6 @@ class ArticleController extends Controller
             'texte'=>'required|string',
             'image'=>'required|image',
             'categorie'=>'required|integer',
-            'tag_id'=>'required|integer'
         ]);
         $image=Storage::disk('public')->put('',$request->image);
         $article=new Article();
@@ -70,10 +69,11 @@ class ArticleController extends Controller
         $article->categorie_id=$request->categorie;
         $article->valide=false;
         $article->save();
-        foreach($request->tag as $tag){
 
-            Tag::where('id',$tag)->first()->articles()->attach($article->id);
-            $article->tags()->attach($tag);
+        foreach($request->tag as $item){
+
+            Tag::find($item->id)->articles()->attach($article->id);
+            $article->tags()->attach($item->id);
         }
         return redirect()->route('article.index');
 
@@ -119,7 +119,7 @@ class ArticleController extends Controller
             'texte'=>'required|string',
             'image'=>'somtimes|image',
             'categorie'=>'required|integer',
-            'tag_id'=>'required|integer'
+
         ]);
         if($request->hasFile('image')){
             if(Storage::disk('public')->exists($article->image)){
@@ -171,7 +171,7 @@ class ArticleController extends Controller
     public function searchTag(Tag $tag)
     {
         
-        $articles=$tag->articles->where('valide',true);
+        $articles=$tag->articles()->where('valide',true)->paginate(3);
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
         $footer=Footer::find(1);
@@ -183,7 +183,7 @@ class ArticleController extends Controller
 
     public function searchCategorie(Categorie $categorie)
     {
-        $articles=Article::where('valide',true)->where('categorie_id',$categorie->id)->get();
+        $articles=Article::where('valide',true)->where('categorie_id', $categorie->id)->paginate(3);
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
         $footer=Footer::find(1);

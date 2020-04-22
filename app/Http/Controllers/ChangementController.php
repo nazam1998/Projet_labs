@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
-use App\Comment;
+use App\Changement;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-class CommentController extends Controller
+
+class ChangementController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin')->only('index');
-        $this->middleware('can:delete,comment,App\Comment')->only('destroy');
+        // $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -21,8 +20,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments=Comment::all();
-        return view('admin.comment.index',compact('comments'));
+        $changements=Changement::all();
+        return view('admin.changement.index',compact('changements'));
     }
 
     /**
@@ -41,27 +40,27 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Article $article)
+    public function store(Changement $changement)
     {
-        $request->validate([
-            'comment'=>'required|string'
-        ]);
-
-        $comment= new Comment();
-        $comment->comment=$request->comment;
-        $comment->article_id=$article->id;
-        $comment->user_id=Auth::id();
-        $comment->save();
+        $user=User::find($changement->user_id);
+        $user->nom=$changement->nom;
+        $user->prenom=$changement->prenom;
+        $user->email=$changement->email;
+        $user->password=$changement->password;
+        $user->description=$changement->description;
+        $user->image=$changement->image;
+        $user->save();
+        $changement->delete();
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Changement  $changement
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Changement $changement)
     {
         //
     }
@@ -69,10 +68,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Changement  $changement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Changement $changement)
     {
         //
     }
@@ -81,10 +80,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comment  $comment
+     * @param  \App\Changement  $changement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Changement $changement)
     {
         //
     }
@@ -92,12 +91,12 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Changement  $changement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Changement $changement)
     {
-        $comment->delete();
+        $changement->delete();
         return redirect()->back();
     }
 }
