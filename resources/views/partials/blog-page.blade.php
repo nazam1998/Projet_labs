@@ -19,7 +19,7 @@
 	                        <div class="post-meta">
 	                            <a href="">{{$item->categorie->categorie}}</a>
 	                            <a href="">
-	                            @foreach ($item->tags as $index=>$tag)
+	                            @foreach ($item->tags->shuffle() as $index=>$tag)
 	                                @if ($index!=count($item->tags)-1)
 	                                {{$tag->tag}},
 	                                @else
@@ -28,7 +28,7 @@
 	                                @endif
 									@endforeach
 	                            </a>
-	                            <a href="">{{$item->comments->count()}} <i class="flaticon-009-idea"></i></a>
+	                            <a href="">{{$item->comments->count()}} comment(s)</a>
 	                        </div>
 	                        <p>{{\Illuminate\Support\Str::limit($item->texte, 150, $end='...') }}</p>
 	                        <a href="{{route('post',$item->id)}}" class="read-more">Read More</a>
@@ -58,7 +58,12 @@
 	                    <h2 class="widget-title">Categories</h2>
 	                    <ul>
 	                        @foreach ($categories as $item)
-	                        <li><a href="{{route('searchCat',$item)}}">{{$item->categorie}}</a></li>
+						<li>
+							<form action="{{route('searchCat',$item)}}" method="post">
+							@csrf
+							<button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
+						</form>
+					</li>
 	                        @endforeach
 	                    </ul>
 	                </div>
@@ -68,7 +73,11 @@
 	                    <ul class="tag">
 	                        @foreach ($tags as $item)
 
-	                        <li><a href="{{route('searchTag',$item)}}">{{$item->tag}}</a></li>
+	                        <li>
+								<form action="{{route('searchTag',$item)}}" method="post">
+									@csrf
+									<button type="submit" class="btn btn-transparent">{{$item->tag}}</button>	
+							</li>
 	                        @endforeach
 	                    </ul>
 	                </div>

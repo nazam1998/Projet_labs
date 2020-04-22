@@ -76,7 +76,24 @@
 .flaticon-047-artificial-intelligence:before { content: "\F12E"; }
 .flaticon-048-abstract:before { content: "\F12F"; }
 .flaticon-049-projector:before { content: "\F130"; }
-.flaticon-050-satellite:before { content: "\F131"; }table td,
+.flaticon-050-satellite:before { content: "\F131"; }.main-sidebar {
+  background-color: #6a23b5 !important;
+}
+
+.card-header {
+  color: white;
+  background-color: #6a23b5 !important;
+}
+
+.btn-primary {
+  background-color: #2be6ab !important;
+}
+
+.btn-warning {
+  color: #777777;
+}
+
+table td,
 table th {
   padding: 10px;
 }

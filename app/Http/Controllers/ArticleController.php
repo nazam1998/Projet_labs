@@ -158,7 +158,7 @@ class ArticleController extends Controller
     }
     public function search(Request $request){
 
-        $articles=Article::where('titre','LIKE','%'.$request->titre.'%')->get();
+        $articles=Article::where('valide',true)->where('titre','LIKE','%'.$request->titre.'%')->get();
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
         $footer=Footer::find(1);
@@ -171,7 +171,7 @@ class ArticleController extends Controller
     public function searchTag(Tag $tag)
     {
         
-        $articles=$tag->articles;
+        $articles=$tag->articles->where('valide',true);
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
         $footer=Footer::find(1);
@@ -181,10 +181,9 @@ class ArticleController extends Controller
         return view('blog',compact('accueil','articles','tags','categories','footer','contact','blog'));
     }
 
-    public function searchCategorie(Categorie $cat)
+    public function searchCategorie(Categorie $categorie)
     {
-        dd($cat->categorie);
-        $articles=Article::where('categorie_id',$cat->id)->get();
+        $articles=Article::where('valide',true)->where('categorie_id',$categorie->id)->get();
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
         $footer=Footer::find(1);

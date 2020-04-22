@@ -18,13 +18,13 @@ class UserController extends Controller
         return view('admin.user.index',compact('users'));
     }
     public function edit(User $user){
-        $roles=Role::all();
+        $roles=Role::where('id','!=','1')->get();
         return view('admin.user.edit',compact('user','roles'));
     }
     public function update(Request $request,User $user){
         $request->validate([
             'description'=>'nullable|string',
-            'role_id'=>'required|integer'
+            'role_id'=>'required|integer|min:2'
         ]);
 
         $user->role_id=$request->role_id;

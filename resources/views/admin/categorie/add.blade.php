@@ -13,15 +13,13 @@ Catégorie Ajout
     <!-- form start -->
 <form role="form" action="{{route('categorie.store')}}" method="POST">
     @csrf
-    @method('PUT')
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Catégorie</label>
                 @error('categorie')
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="categorie" value="{{old('categorie')}}" class="form-control" id="exampleInputEmail1"
-                    placeholder="Enter email">
+                <input type="text" name="categorie" value="{{old('categorie')}}" class="form-control" id="exampleInputEmail1">
             </div>
             
         </div>

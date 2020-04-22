@@ -18,7 +18,6 @@ Back Office Commentaire
                     <td>Commentaires</td>
                     <td>Article</td>
                     <td>User</td>
-                    <td>Action</td>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +25,8 @@ Back Office Commentaire
 
             <tr>
                 <td>{{$item->comment}}</td>
-                <td>{{$item}}</td>
+                <td>{{$item->article->titre}}</td>
+                <td>{{$item->user->nom.' '.$item->user->prenom}}</td>
             </tr>
                 @endforeach
 

@@ -1,14 +1,31 @@
-
 @import './css/flaticon.css';
 
-table{
-    td,th{
+.main-sidebar {
+    background-color: #6a23b5 !important;
+}
+
+.card-header{
+    color: white;
+    background-color: #6a23b5 !important
+}
+.btn-primary{
+    background-color: #2be6ab !important
+}
+.btn-warning{
+    color: #777777;
+}
+table {
+
+    td,
+    th {
         padding: 10px;
     }
-    img{
+
+    img {
         width: 100px;
     }
 }
+
 select {
     font-family: 'FontAwesome', 'Second Font name';
     font-weight: 90;

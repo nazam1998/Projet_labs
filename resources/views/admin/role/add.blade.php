@@ -13,7 +13,6 @@ Rôle Ajout
     <!-- form start -->
 <form role="form" action="{{route('role.store')}}" method="POST">
     @csrf
-    @method('PUT')
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Rôle</label>
@@ -21,7 +20,7 @@ Rôle Ajout
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror
                 <input type="text" name="role" value="{{old('role')}}" class="form-control" id="exampleInputEmail1"
-                    placeholder="Enter email">
+                    placeholder="Membre">
             </div>
             
         </div>

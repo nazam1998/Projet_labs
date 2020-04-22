@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('texte');
             $table->string('image');
             $table->boolean('valide');
+            
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->on('categories')->references('id')->onDelete('cascade')->onUpdate('cascade');
            
@@ -29,6 +30,7 @@ class CreateArticlesTable extends Migration
         });
         
         Schema::create('article_tag', function (Blueprint $table) {
+            
             $table->id();
 
             $table->unsignedBigInteger('tag_id');

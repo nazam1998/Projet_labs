@@ -24,9 +24,12 @@ Back Office Rôle
 
             <tr>
                 <td>{{$item->role}}</td>
+                
                 <td>
-                <a href="{{route('role.edit',$item)}}" class="btn btn-warning ml-5">Editer</a>
-                <a href="{{route('role.destroy',$item)}}" class="btn btn-danger">Supprimer</a>
+                    @if ($item->id>4)
+                    <a href="{{route('role.edit',$item)}}" class="btn btn-warning ml-5">Editer</a>
+                    <a href="{{route('role.destroy',$item)}}" class="btn btn-danger">Supprimer</a>
+                    @endif
                 </td>
             </tr>
                 @endforeach

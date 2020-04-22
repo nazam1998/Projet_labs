@@ -735,11 +735,8 @@ ul {
 	margin-bottom: 18px;
 }
 
-.promotion-section h2 {
+.promotion-section h2 span{
 	background: #6a23b5;
-	padding: 0 3px 5px;
-	display: inline-block;
-	color: #0b1033;
 }
 
 .promotion-section p {
@@ -1172,8 +1169,18 @@ ul {
 	margin-bottom: 20px;
 	font-size: 15px;
 }
+.widget-item ul li button {
+	color: #6c6e7e;
+	background-color: transparent;
+	display: block;
+	margin-bottom: 20px;
+	font-size: 15px;
+}
 
 .widget-item ul li a:hover {
+	color: #2be6ab;
+}
+.widget-item ul li button:hover {
 	color: #2be6ab;
 }
 
@@ -1206,6 +1213,10 @@ ul {
 }
 
 .widget-item ul.tag li a {
+	color: #6a23b5;
+	margin-bottom: 0;
+}
+.widget-item ul.tag li button {
 	color: #6a23b5;
 	margin-bottom: 0;
 }

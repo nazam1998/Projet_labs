@@ -1,6 +1,6 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
-@section('title', 'AdminLTE')
+@section('title', 'Projet Labs')
 
 @section('content_header')
     <h1 class="m-0 text-dark">Dashboard</h1>

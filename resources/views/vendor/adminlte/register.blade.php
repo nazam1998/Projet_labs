@@ -29,21 +29,37 @@
         <div class="card">
             <div class="card-body register-card-body">
             <p class="login-box-msg">{{ __('adminlte::adminlte.register_message') }}</p>
-            <form action="{{ $register_url }}" method="post">
+            <form action="{{ $register_url }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="input-group mb-3">
-                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}"
-                           placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
+                    <input type="text" name="prenom" class="form-control {{ $errors->has('prenom') ? 'is-invalid' : '' }}" value="{{ old('prenom') }}"
+                           placeholder="Prenom" autofocus>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
                     </div>
 
-                    @if ($errors->has('name'))
+                    @if ($errors->has('prenom'))
                         <div class="invalid-feedback">
-                            <strong>{{ $errors->first('name') }}</strong>
+                            <strong>{{ $errors->first('prenom') }}</strong>
+                        </div>
+                    @endif
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" name="nom" class="form-control {{ $errors->has('nom') ? 'is-invalid' : '' }}" value="{{ old('nom') }}"
+                           placeholder="Nom" autofocus>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+
+                    @if ($errors->has('nom'))
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('nom') }}</strong>
                         </div>
                     @endif
                 </div>
@@ -69,6 +85,11 @@
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
+                    @if ($errors->has('image'))
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('image') }}</strong>
+                        </div>
+                    @endif
                   </div>
                 <div class="input-group mb-3">
                     <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"

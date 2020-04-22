@@ -27,7 +27,7 @@
                                 @endif
                                 @endforeach
                             </a>
-                            <a href="">{{$article->comments->count()}}</a>
+                            <a href="">{{$article->comments->count()}} comment(s)</a>
                         </div>
                         <p>{{$article->texte}}</p>
                     </div>
@@ -49,6 +49,7 @@
                             @foreach ($comments as $item)
 
                             <li>
+                                
                                 <div class="avatar">
                                     <img src="{{asset('storage/'.$item->user->image)}}" alt="">
                                 </div>
@@ -98,7 +99,13 @@
                     <ul>
                         @foreach ($categories as $item)
 
-                    <li><a href="{{route('searchCat',$item)}}">{{$item->categorie}}</a></li>
+                    <li>
+                        <li>
+							<form action="{{route('searchCat',$item)}}" method="post">
+							@csrf
+							<button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
+						</form>
+                    </li>
                         @endforeach
                     </ul>
                 </div>

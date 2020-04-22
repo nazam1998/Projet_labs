@@ -13,7 +13,6 @@ Tag Ajout
     <!-- form start -->
 <form role="form" action="{{route('tag.store')}}" method="POST">
     @csrf
-    @method('PUT')
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Tag</label>

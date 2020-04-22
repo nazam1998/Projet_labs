@@ -25,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($articles as $item)
+                @foreach ($testimonials as $item)
                 <tr>
                     <td>{{$item->id}}</td>
                     <td><img src="{{asset('storage/'.$item->image)}}" alt=""></td>

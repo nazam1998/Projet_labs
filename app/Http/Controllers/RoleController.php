@@ -20,6 +20,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles=Role::all();
+        return view('admin.role.index',compact('roles'));
     }
 
     /**
@@ -43,6 +44,7 @@ class RoleController extends Controller
         $request->validate([
             'role'=>'required|string|unique:roles'
         ]);
+
         $role=new Role();
         $role->role=$request->role;
         $role->save();
@@ -83,6 +85,9 @@ class RoleController extends Controller
         $request->validate([
             'role'=>'required|string|unique:roles,role,'.$role->id
         ]);
+        if($role->id<4){
+            return redirect()->back();
+        }
         $role->role=$request->role;
         $role->save();
         return redirect()->route('role.index');
@@ -96,6 +101,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        if($role->id<4){
+            return redirect()->back();
+        }
         $role->delete();
         return redirect()->back();
     }

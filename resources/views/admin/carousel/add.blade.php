@@ -13,7 +13,6 @@ Carousel Ajout
     <!-- form start -->
 <form role="form" action="{{route('carousel.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    @method('PUT')
         <div class="card-body">
             
             <div class="form-group">

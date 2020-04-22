@@ -13,23 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// 
+
 Route::get('/','WelcomeController@index')->name('welcome');
 Route::get('/services','WelcomeController@service')->name('services');
 Route::get('/blog','WelcomeController@blog')->name('blog');
 Route::get('/contact','WelcomeController@contact')->name('contact');
 Route::get('/post/{id}','WelcomeController@post')->name('post');
+
+// Mail 
+
 Route::post('newsletter','NewsletterController@store')->name('storenews');
 Route::get('admin/newsletter','NewsletterController@index')->name('newsletter.index');
 Route::get('admin/formulaire','FormulaireController@index')->name('formulaire.index');
 Route::post('formulaire','FormulaireController@store')->name('storemsg');
+
+// Comment
 Route::get('admin/comment','CommentController@index')->name('comment');
 Route::post('comment/{article}','CommentController@store')->name('comment.store');
 
+// Welcome Page
 Route::resource('admin/accueil', 'AccueilController');
 
+// Search
 Route::post('search/articles','ArticleController@search')->name('search');
-Route::get('search/articlesByTag/{tag}','ArticleController@searchTag')->name('searchTag');
-Route::get('search/articlesByCategorie/{categorie}','ArticleController@searchCategorie')->name('searchCat');
+Route::post('search/articlesByTag/{tag}','ArticleController@searchTag')->name('searchTag');
+Route::post('search/articlesByCategorie/{categorie}','ArticleController@searchCategorie')->name('searchCat');
+
 Route::resource('admin/article', 'ArticleController');
 
 Route::resource('admin/blog', 'BlogController');
@@ -60,7 +70,3 @@ Route::resource('admin/testimonial', 'TestimonialController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
