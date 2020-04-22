@@ -19,6 +19,7 @@
                     <th>Logo</th>
                     <th>Titre</th>
                     <th>Description</th>
+                    <th>Color</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                 <td><i class="{{$item->logo}} fa-2x"></i></td>
                     <td>{{$item->titre}}</td>
                     <td>{{$item->description}}</td>
+                <td style="background-color: {{$item->color}}"></td>
                 <td>
                     <a href="{{route('service.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
                 <form action="{{route('service.destroy',$item)}}" method="post">

@@ -12,11 +12,11 @@
                     @if ($index<3)
                         
                     <div class="icon-box light left">
-                        <div class="service-text">
-                        <h2>{{$item->titre}}</h2>
-                        <p>{{$item->description}}</p>
+                        <div class="service-text" >
+                        <h2 style="color: {{$item->color}}">{{$item->titre}}</h2>
+                        <p style="color: {{$item->color}}">{{$item->description}}</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon" style="color: {{$item->color}}">
                         <i class="{{$item->logo}}"></i>
                         </div>
                     </div>
@@ -34,12 +34,12 @@
                 @foreach ($services as $index=>$item)
                     @if ($index>=3)
                     <div class="icon-box light">
-                        <div class="icon">
+                        <div class="icon" style="color: {{$item->color}}">
                         <i class="{{$item->logo}}"></i>
                         </div>
-                        <div class="service-text">
-                        <h2>{{$item->titre}}</h2>
-                        <p>{{$item->description}}</p>
+                        <div class="service-text" >
+                        <h2 style="color: {{$item->color}}">{{$item->titre}}</h2>
+                        <p style="color: {{$item->color}}">{{$item->description}}</p>
                         </div>
                     </div>
                     @endif

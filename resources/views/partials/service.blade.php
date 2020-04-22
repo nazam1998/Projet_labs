@@ -9,13 +9,13 @@
 					
 				<!-- single service -->
 				<div class="col-md-4 col-sm-6">
-					<div class="service">
+				<div class="service" style="color: {{$item->color}}">
 						<div class="icon">
 						<i class="{{$item->logo}}"></i>
 						</div>
 						<div class="service-text">
 						<h2>{{$item->titre}}</h2>
-						<p>{{$item->description}}</p>
+						<p style="color: {{$item->color}}">{{$item->description}}</p>
 						</div>
 					</div>
 				</div>

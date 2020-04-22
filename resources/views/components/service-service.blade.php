@@ -10,12 +10,12 @@
             <!-- single service -->
             <div class="col-md-4 col-sm-6">
                 <div class="service">
-                    <div class="icon">
+                    <div class="icon" style="color: {{$item->color}}">
                     <i class="{{$item->logo}}"></i>
                     </div>
-                    <div class="service-text">
+                    <div class="service-text" style="color: {{$item->color}}">
                     <h2>{{$item->titre}}</h2>
-                    <p>{{$item->description}}</p>
+                    <p style="color: {{$item->color}}">{{$item->description}}</p>
                     </div>
                 </div>
             </div>
