@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
     public function index(){
         $users=User::all();
         return view('admin.user.index',compact('users'));

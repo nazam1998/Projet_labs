@@ -12,7 +12,8 @@ class FormulaireController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth')->only('index');
+        $this->middleware('admin')->only('index');
     }
     /**
      * Display a listing of the resource.

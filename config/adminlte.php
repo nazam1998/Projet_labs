@@ -224,81 +224,103 @@ return [
             'text' => 'Accueil',
             'url'  => 'admin/accueil',
             'icon' => 'fas fa-fw fa-home',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Article',
             'url'  => 'admin/article',
             'icon' => 'fas fa-fw fa-newspaper',
+            'can'=>'redac'
         ],
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'icon' => 'fas fa-fw fa-blog',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Carousel',
             'url'  => 'admin/carousel',
             'icon' => 'fas fa-fw fa-images',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Categorie',
             'url'  => 'admin/categorie',
             'icon' => 'fas fa-fw fa-shapes',
+            // 'can'=>'admin'
+        ],
+        [
+            'text' => 'Comment',
+            'url'  => 'admin/comment',
+            'icon' => 'fas fa-fw fa-shapes',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Contact',
             'url'  => 'admin/contact',
             'icon' => 'fas fa-fw fa-phone-alt',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Footer',
             'url'  => 'admin/footer',
             'icon' => 'fas fa-fw fa-copyright',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Google',
             'url'  => 'admin/google',
             'icon' => 'fab fa-fw fa-google',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Newsletter',
             'url'  => 'admin/newsletter',
             'icon' => 'fas fa-fw fa-envelope',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Messages',
             'url'  => 'admin/formulaire',
             'icon' => 'fas fa-fw fa-envelope-square',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Role',
             'url'  => 'admin/role',
             'icon' => 'fas fa-fw fa-user-tag',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Service',
             'url'  => 'admin/service',
             'icon' => 'fas fa-fw fa-cogs',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Page Service',
             'url'  => 'admin/servicepage',
             'icon' => 'fab fa-fw fa-servicestack',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Users',
             'url'  => 'admin/user',
             'icon' => 'fas fa-fw fa-users',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Tag',
             'url'  => 'admin/tag',
             'icon' => 'fas fa-fw fa-tags',
+            // 'can'=>'admin'
         ],
         [
             'text' => 'Testimonial',
             'url'  => 'admin/testimonials',
             'icon' => 'fas fa-fw fa-comment',
+            // 'can'=>'admin'
         ],
         
     ],

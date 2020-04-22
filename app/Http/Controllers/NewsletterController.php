@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\URL;
 
 class NewsletterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('index');
+        $this->middleware('admin')->only('index');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin')->only('index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments=Comment::all();
+        return view('admin.comment.index',compact('comments'));
     }
 
     /**

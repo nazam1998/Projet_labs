@@ -14,6 +14,6 @@ class UserPolicy
     }
 
     public function redac (User $user){
-        return $user->role_id==1;
+        return $user->role_id==2 || $user->role_id==3;
     }
 }

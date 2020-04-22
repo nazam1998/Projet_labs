@@ -53,8 +53,9 @@
                                     <img src="{{asset('storage/'.$item->user->image)}}" alt="">
                                 </div>
                                 <div class="commetn-text">
-                                    <h3>{{$item->user->nom.' '.$item->user->prenom}} | {{$item->created_at}}</h3>
-                                    <p>{{$item->message}}</p>
+                                    <h3>{{$item->user->nom.' '.$item->user->prenom}} | {{$article->created_at->format('d')}} {{\Illuminate\Support\Str::limit(date('F',strtotime($article->created_at)), 3, $end='')}}, {{$article->created_at->format('Y')}} | {{$article->created_at->format('H:i:s')}}  
+                                        
+                                    <p>{{$item->comment}}</p>
                                 </div>
                             </li>
                             @endforeach
@@ -97,7 +98,7 @@
                     <ul>
                         @foreach ($categories as $item)
 
-                        <li><a href="#">{{$item->categorie}}</a></li>
+                    <li><a href="{{route('searchCat',$item)}}">{{$item->categorie}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -108,7 +109,7 @@
                     <ul class="tag">
                         @foreach ($tags as $item)
 
-                        <li><a href="">{{$item->tag}}</a></li>
+                    <li><a href="{{route('searchTag',$item)}}">{{$item->tag}}</a></li>
                         @endforeach
                     </ul>
                 </div>

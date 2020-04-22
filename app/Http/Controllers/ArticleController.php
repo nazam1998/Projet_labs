@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except(['search','searchTag','searchCategorie']);
+        $this->middleware('articlemake')->only('create','store');
+        $this->middleware('articleedit')->only('update','edit','destroy');
+    }
+    
+        
+    
     /**
      * Display a listing of the resource.
      *
@@ -162,7 +170,7 @@ class ArticleController extends Controller
 
     public function searchTag(Tag $tag)
     {
-
+        
         $articles=$tag->articles;
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
@@ -175,8 +183,8 @@ class ArticleController extends Controller
 
     public function searchCategorie(Categorie $cat)
     {
-
-        $articles=$cat->articles;
+        dd($cat->categorie);
+        $articles=Article::where('categorie_id',$cat->id)->get();
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
         $footer=Footer::find(1);

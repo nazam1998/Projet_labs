@@ -28,7 +28,7 @@
 	                                @endif
 									@endforeach
 	                            </a>
-	                            <a href="">{{$item->comments->count()}}</a>
+	                            <a href="">{{$item->comments->count()}} <i class="flaticon-009-idea"></i></a>
 	                        </div>
 	                        <p>{{\Illuminate\Support\Str::limit($item->texte, 150, $end='...') }}</p>
 	                        <a href="{{route('post',$item->id)}}" class="read-more">Read More</a>
@@ -58,7 +58,6 @@
 	                    <h2 class="widget-title">Categories</h2>
 	                    <ul>
 	                        @foreach ($categories as $item)
-
 	                        <li><a href="{{route('searchCat',$item)}}">{{$item->categorie}}</a></li>
 	                        @endforeach
 	                    </ul>
