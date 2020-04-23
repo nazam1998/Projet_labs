@@ -16,7 +16,7 @@ Catégorie Edit
     @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Texte</label>
+                <label for="exampleInputEmail1">Texte <small>Pour mettre le lien dans un mot, veuillez le mettre entre []</small></label>
                 @error('texte')
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror

@@ -16,7 +16,7 @@ Page Service Edit
     @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Titre 1</label>
+                <label for="exampleInputEmail1">Titre 1 <small>Pour mettre un mot en vert, veuillez le mettre entre []</small></label>
                 @error('titre1')
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror

@@ -26,8 +26,8 @@ class WelcomeController extends Controller
         $service3=Service::latest()->take(3)->get();
         $testimonials=Testimonial::latest()->take(6)->get();
         $services=Service::inRandomOrder()->take(9)->get();
-        $team=User::inRandomOrder()->where('role_id','!=',1)->where('role_id','!=',4)->take(3)->get();
-        $ceo=User::where('role_id',1)->first();
+        $team=User::inRandomOrder()->where('role_id','!=',2)->where('role_id','!=',5)->take(3)->get();
+        $ceo=User::where('role_id',2)->first();
         $carousel=Carousel::all();
         $footer=Footer::find(1);
         $contact=Contact::find(1);

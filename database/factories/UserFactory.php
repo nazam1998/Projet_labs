@@ -22,6 +22,7 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
     $imageName=Str::random(10).'.jpg';
     Storage::disk('public')->copy('avatar/01.jpg', $imageName);
+    $role=Role::inRandomOrder()->where('id','!=',2)->first()->id;
     return [
         'nom' => $faker->name,
         'prenom' => $faker->name,
@@ -30,6 +31,6 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
         'image'=>$imageName,
-        'role_id'=>Role::inRandomOrder()->where('id','!=',1)->first()->id,
+        'role_id'=>$role,
     ];
 });

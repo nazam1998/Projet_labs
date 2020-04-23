@@ -13,7 +13,7 @@ class FooterSeeder extends Seeder
     public function run()
     {
         DB::table('footers')->insert([
-            'texte'=>'2017 All rights reserved. Designed by Colorlib',
+            'texte'=>'2017 All rights reserved. Designed by [Colorlib]',
             'lien'=>'https://colorlib.com'
         ]);
     }

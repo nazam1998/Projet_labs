@@ -17,7 +17,7 @@ class editArticle
     public function handle($request, Closure $next)
     {
         $article=$request->route()->parameters()['article'];
-        if(Auth::user()->role_id==3||(Auth::user()->role_id==2 && $article->user_id==Auth::id())){
+        if(Auth::user()->role_id==4||(Auth::user()->role_id==3 && $article->user_id==Auth::id())){
 
             return $next($request);
         }

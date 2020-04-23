@@ -16,7 +16,7 @@ class makeArticle
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role_id==2 || Auth::user()->role_id==3){
+        if(Auth::user()->role_id==3 || Auth::user()->role_id==4){
 
             return $next($request);
         }

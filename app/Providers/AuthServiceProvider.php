@@ -34,7 +34,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role_id==2;
         });
         Gate::define('manage-article',function($user){
-            return $user->role_id<4;
+
+            return $user->role_id<4 && $user->role_id !=2;
+            
         });
         Gate::define('add-article', function ($user) {
 

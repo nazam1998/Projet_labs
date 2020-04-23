@@ -115,7 +115,7 @@ class AccueilController extends Controller
             $logo='little'.$biglogo;
 
             Image::make(storage_path('app/public/' . $accueil->big_logo))
-            ->resize(111,32 )
+            ->resize(130,60 )
             ->save(storage_path('app/public/' .$logo));
 
             $accueil->logo=$logo;
@@ -146,6 +146,6 @@ class AccueilController extends Controller
      */
     public function destroy(Accueil $accueil)
     {
-        if()
+        
     }
 }

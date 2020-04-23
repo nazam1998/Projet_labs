@@ -8,6 +8,7 @@ Accueil Edit
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">Edition des éléments de l'accueil</h3>
+        <h3 class="card-title">Pour mettre un mot en vert dans un titre, veuillez le mettre entre []</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->

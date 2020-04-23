@@ -75,7 +75,13 @@
     </div>
     @endif
 </div>
+@if (Auth::user()->role_id==1 || Auth::user()->role_id==4)
+
+<button type="submit" class="btn btn-primary">Save</button>
+@else 
 <button type="submit" class="btn btn-primary">Submit</button>
+@endif
+
 </form>
 </div>
 @endsection
