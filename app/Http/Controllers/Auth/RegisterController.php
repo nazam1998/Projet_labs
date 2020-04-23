@@ -69,7 +69,7 @@ class RegisterController extends Controller
     {
         $image=Storage::disk('public')->put('',$data['image']);
         if(count(User::all())==0){
-            $role=1;
+            $role=2;
         }else{
             $role=4;
         }
