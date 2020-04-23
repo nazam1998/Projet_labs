@@ -92,7 +92,7 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $request->validate([
-            'image'=>'required|image',
+            'image'=>'sometimes|image',
             'nom'=>'required|string',
             'prenom'=>'required|string',
             'fonction'=>'required|string',

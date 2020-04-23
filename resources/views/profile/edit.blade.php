@@ -8,7 +8,13 @@
 @if (session()->has('msg'))
 <p class="alert alert-success">{{session('msg')}}</p>
 @endif
+@if (Auth::user()->role_id==1 || Auth::user()->role_id==4)
+<form action="{{route('updateProfileSelf')}}" method="post" enctype="multipart/form-data">
+
+@else
+    
 <form action="{{route('updateProfile')}}" method="post" enctype="multipart/form-data">
+    @endif
     {{ csrf_field() }}
     
     <div class="form-group mb-3">

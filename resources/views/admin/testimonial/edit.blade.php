@@ -16,11 +16,25 @@ Editer Testimonial
         @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="titre">Titre</label>
-                @error('titre')
+                <label for="nom">Nom</label>
+                @error('nom')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="titre" class="form-control" id="titre" value="{{old('titre',$testimonial->titre)}}" placeholder="Enter a Title">
+                <input type="text" name="nom" class="form-control" id="nom" value="{{old('nom',$testimonial->nom)}}" placeholder="Enter a Name">
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prenom</label>
+                @error('prenom')
+                <p class="alert alert-danger">{{$message}}</p>
+                @enderror
+                <input type="text" name="prenom" class="form-control" id="prenom" value="{{old('prenom',$testimonial->prenom)}}" placeholder="Enter a Surname">
+            </div>
+            <div class="form-group">
+                <label for="fonction">Fonction</label>
+                @error('fonction')
+                <p class="alert alert-danger">{{$message}}</p>
+                @enderror
+                <input type="text" name="fonction" class="form-control" id="fonction" value="{{old('fonction',$testimonial->fonction)}}" placeholder="Enter a Function">
             </div>
             <div class="form-group">
                 <label for="titre">Texte</label>

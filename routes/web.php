@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,6 +74,7 @@ Auth::routes();
 // Profile
 Route::get('profile','ProfileController@index')->name('profile');
 Route::post('profile/submit','ProfileController@update')->name('updateProfile');
+Route::post('profile/update','ProfileController@updateSelf')->name('updateProfileSelf');
 
 // Changement
 Route::get('admin/changement','ChangementController@index')->name('changement');

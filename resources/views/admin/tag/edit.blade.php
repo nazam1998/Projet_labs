@@ -21,7 +21,7 @@ Tag Edit
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror
                 <input type="text" name="tag" value="{{old('tag',$tag->tag)}}" class="form-control" id="exampleInputEmail1"
-                    placeholder="Enter email">
+                    placeholder="My Tag">
             </div>
             
         </div>

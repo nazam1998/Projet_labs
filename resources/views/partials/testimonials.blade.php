@@ -14,13 +14,13 @@
 						
 						<div class="testimonial">
 							<span>‘​‌‘​‌</span>
-						<p>{{$item->texte}}</p>
+						<p>{{wordwrap($item->texte, 5, "\n", true)}}</p>
 							<div class="client-info">
 								<div class="avatar">
 									<img src="{{asset('storage/'.$item->image)}}" alt="">
 								</div>
 								<div class="client-name">
-								<h2>{{$item->nom.' '.$item->prenom}}</h2>
+								<h2>{{wordwrap($item->nom.' '.$item->prenom, 5, "\n", true)}}</h2>
 								<p>{{$item->fonction}}</p>
 								</div>
 							</div>

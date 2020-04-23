@@ -64,7 +64,7 @@ class ProfileController extends Controller
     }
 
 
-    public function update(Request $request){
+    public function updateSelf(Request $request){
         $request->validate([
          'nom' => ['required', 'string', 'max:255'],
          'prenom' => ['required', 'string', 'max:255'],
@@ -84,14 +84,13 @@ class ProfileController extends Controller
          Auth::user()->prenom=$request->prenom;
          Auth::user()->email=$request->email;
          Auth::user()->description=$request->description;
-         Auth::user()->user_id=Auth::id();
          if($request->has('password')){
              Auth::user()->password=Hash::make($request->password);
          }else{
              Auth::user()->password=Auth::user()->password;
          }
          Auth::user()->save();
-         return redirect()->back()->with('msg','Votre requête de changement a été envoyé avec succès');
+         return redirect()->back()->with('msg','Votre profil a été modfié avec succèss');
  
  
      }

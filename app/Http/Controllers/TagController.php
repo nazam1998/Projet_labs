@@ -52,7 +52,7 @@ class TagController extends Controller
         $tag=new Tag();
         $tag->tag=$request->tag;
         $tag->save();
-        redirect()->route('tag.index');
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -88,7 +88,7 @@ class TagController extends Controller
         ]);
         $tag->tag=$request->tag;
         $tag->save();
-        redirect()->route('tag.index');
+        return redirect()->route('tag.index');
     }
 
     /**

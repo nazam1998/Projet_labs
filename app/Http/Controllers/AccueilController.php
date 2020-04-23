@@ -146,6 +146,6 @@ class AccueilController extends Controller
      */
     public function destroy(Accueil $accueil)
     {
-        //
+        if()
     }
 }

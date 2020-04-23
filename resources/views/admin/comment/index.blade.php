@@ -8,7 +8,6 @@ Back Office Commentaire
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Commentaire Table</h3>
-    <a href="{{route('categorie.create')}}" class="card-title btn btn-primary ml-5">Ajouter Commentaire</a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -23,11 +22,11 @@ Back Office Commentaire
             <tbody>
                 @foreach ($comments as $item)
 
-            <tr>
-                <td>{{$item->comment}}</td>
-                <td>{{$item->article->titre}}</td>
-                <td>{{$item->user->nom.' '.$item->user->prenom}}</td>
-            </tr>
+                <tr>
+                    <td>{{$item->comment}}</td>
+                    <td>{{$item->article->titre}}</td>
+                    <td>{{$item->user->nom.' '.$item->user->prenom}}</td>
+                </tr>
                 @endforeach
 
             </tbody>

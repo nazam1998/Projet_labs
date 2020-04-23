@@ -20,16 +20,16 @@ Page Service Edit
                 @error('titre1')
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="titre1" value="{{old('titre1',$blog->titre1)}}" class="form-control" id="exampleInputEmail1"
-                    placeholder="Enter email">
+                <input type="text" name="titre1" value="{{old('titre1',$servicepage->titre1)}}" class="form-control" id="exampleInputEmail1"
+                    placeholder="Enter first Title">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Titre 2</label>
-                @error('servicepage')
+                @error('titre2')
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="servicepage" value="{{old('servicepage',$blog->servicepage)}}" class="form-control" id="exampleInputEmail1"
-                    placeholder="Enter email">
+                <input type="text" name="titre2" value="{{old('titre2',$servicepage->titre2)}}" class="form-control" id="exampleInputEmail1"
+                    placeholder="Enter second Title">
             </div>
             
 
