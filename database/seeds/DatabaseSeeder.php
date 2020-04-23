@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // DB::statement('SET_FOREIGN_KEY');
         $this->call(AccueilSeeder::class);
         $this->call(BlogSeeder::class);
         $this->call(CarouselSeeder::class);

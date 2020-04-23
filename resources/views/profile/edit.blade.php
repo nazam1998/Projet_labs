@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+@if (session()->has('msg'))
+<p class="alert alert-success">{{session('msg')}}</p>
+@endif
 <form action="{{route('updateProfile')}}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     

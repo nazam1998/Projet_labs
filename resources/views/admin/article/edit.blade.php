@@ -20,14 +20,16 @@ Editer Article
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="titre" class="form-control" id="titre" value="{{old('titre',$article->titre)}}">
+                <input type="text" name="titre" class="form-control" id="titre"
+                    value="{{old('titre',$article->titre)}}">
             </div>
             <div class="form-group">
                 <label for="titre">Texte</label>
                 @error('titre')
                 <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <textarea type="text" name="texte" class="form-control" id="titre" name="texte">{{old('texte',$article->texte)}}</textarea>
+                <textarea type="text" name="texte" class="form-control" id="titre"
+                    name="texte">{{old('texte',$article->texte)}}</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Image</label>
@@ -49,27 +51,31 @@ Editer Article
                 <select class="form-control" name="categorie">
                     @foreach ($categories as $item)
                     @if ($item->id==$article->categorie_id)
-                        
+
                     <option selected value="{{$item->id}}">{{$item->categorie}}</option>
-                    @else 
+                    @else
                     <option value="{{$item->id}}">{{$item->categorie}}</option>
                     @endif
                     @endforeach
                 </select>
-              </div>
+            </div>
             <div class="row">
+                <h4>Tags</h4>
                 @foreach ($tags as $item)
 
                 <div class="form-check col-3">
                     @error('tag')
-                <p class="alert alert-danger">{{$message}}</p>
-                @enderror
-                @if($article->tags->contains($item->id))
-                <input checked type="checkbox" value="{{$item->id}}" class="form-check-input" name="tag[]" >
-                @else 
-                <input type="checkbox" value="{{$item->id}}" class="form-check-input" name="tag[]" >
-                
-                @endif
+                    <p class="alert alert-danger">{{$message}}</p>
+                    @enderror
+
+                    @if($article->tags->contains($item->id))
+
+                    <input checked type="checkbox" value="{{$item->id}}" class="form-check-input" name="tag[]">
+
+                    @else
+                    <input type="checkbox" value="{{$item->id}}" class="form-check-input" name="tag[]">
+
+                    @endif
                     <label class="form-check-label" for="exampleCheck1">{{$item->tag}}</label>
                 </div>
                 @endforeach

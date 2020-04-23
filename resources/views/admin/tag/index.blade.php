@@ -24,9 +24,13 @@ Back Office Tag
 
             <tr>
                 <td>{{$item->tag}}</td>
-                <td>
-                <a href="{{route('tag.edit',$item)}}" class="btn btn-warning ml-5">Editer</a>
-                <a href="{{route('tag.destroy',$item)}}" class="btn btn-danger">Supprimer</a>
+                <td class="text-center">
+                <a href="{{route('tag.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
+                <form action="{{route('tag.destroy',$item)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
                 </td>
             </tr>
                 @endforeach

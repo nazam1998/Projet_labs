@@ -8,20 +8,22 @@
                     <div class="post-thumbnail">
                         <img src="{{asset('storage/'.$article->image)}}" alt="">
                         <div class="post-date">
-							<h2>{{$article->created_at->format('d')}}</h2>
-								<h3>{{\Illuminate\Support\Str::limit(date('F',strtotime($article->created_at)), 3, $end='')}} {{$article->created_at->format('Y')}}</h3>
-							</div>
+                            <h2>{{$article->created_at->format('d')}}</h2>
+                            <h3>{{\Illuminate\Support\Str::limit(date('F',strtotime($article->created_at)), 3, $end='')}}
+                                {{$article->created_at->format('Y')}}</h3>
+                        </div>
                     </div>
                     <div class="post-content">
                         <h2 class="post-title">{{$article->titre}}</h2>
                         <div class="post-meta">
                             <a href="">{{$article->categorie->categorie}}</a>
                             <a href="">
-                            @foreach ($article->tags->shuffle()->take(3) as $index=>$item)
-                            @if ($index<3)
-                                
-                            {{$item->tag}},
-                            @endif
+                                @foreach ($article->tags->shuffle()->take(3) as $index=>$item)
+                                @if($loop->last)
+                                {{$item->tag}}
+                                @else
+                                {{$item->tag}},
+                                @endif
                                 @endforeach
                             </a>
                             <a href="">{{$article->comments->count()}} comment(s)</a>
@@ -44,23 +46,26 @@
                         <h2>Comments ({{$article->comments->count()}})</h2>
                         <ul class="comment-list">
                             @foreach ($comments as $item)
-                            
+
                             <li>
-                                
+
                                 <div class="avatar">
                                     <img src="{{asset('storage/'.$item->user->image)}}" alt="">
                                 </div>
                                 <div class="commetn-text">
-                                    <h3>{{$item->user->nom.' '.$item->user->prenom}} | {{$item->created_at->format('d')}} {{\Illuminate\Support\Str::limit(date('F',strtotime($item->created_at)), 3, $end='')}}, {{$item->created_at->format('Y')}} | {{$item->created_at->format('H:i:s')}}  
-                                        
-                                    <p>{{$item->comment}}</p>
-                                    @can('delete',$item, App\Comment::class)
-                                    <form action="{{route('comment.destroy',$item)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" >Delete</button>
-                                    </form>
-                                    @endcan
+                                    <h3>{{$item->user->nom.' '.$item->user->prenom}} |
+                                        {{$item->created_at->format('d')}}
+                                        {{\Illuminate\Support\Str::limit(date('F',strtotime($item->created_at)), 3, $end='')}},
+                                        {{$item->created_at->format('Y')}} | {{$item->created_at->format('H:i:s')}}</h3>
+
+                                        <p>{{$item->comment}}</p>
+                                        @can('delete',$item, App\Comment::class)
+                                        <form action="{{route('comment.destroy',$item)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                        @endcan
                                 </div>
                             </li>
                             @endforeach
@@ -69,17 +74,23 @@
                     </div>
                     <!-- Commert Form -->
                     <div class="row">
-                        <div class="col-md-9 comment-from">
+                        <div class="col-md-9 comment-from" id="comment">
                             <h2>Leave a comment</h2>
-                        <form class="form-class" method="POST" action="{{route('comment.store',$article)}}">
+                            @error('comment')
+                            <p class="alert alert-danger">{{$message}}</p>
+                            @enderror
+                            @if (session()->has('msg'))
+                            <p class="alert alert-success">{{session('msg')}}</p>
+                            @endif
+                            <form class="form-class" method="POST" action="{{route('comment.store',$article)}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <textarea name="comment" placeholder="Message"></textarea>
                                         @auth
                                         <button class="site-btn" type="submit">send</button>
-                                            @else
-                                            <button disabled="disabled">send</button>
+                                        @else
+                                        <button disabled="disabled">send</button>
                                         @endauth
                                     </div>
                                 </div>
@@ -92,7 +103,7 @@
             <div class="col-md-4 col-sm-5 sidebar">
                 <!-- Single widget -->
                 <div class="widget-item">
-                <form action="{{route('search')}}" class="search-form" method="POST">
+                    <form action="{{route('search')}}" class="search-form" method="POST">
                         <input type="text" placeholder="Search" name="titre">
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
                     </form>
@@ -103,13 +114,13 @@
                     <ul>
                         @foreach ($categories as $item)
 
-                    <li>
                         <li>
-							<form action="{{route('searchCat',$item)}}" method="post">
-							@csrf
-							<button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
-						</form>
-                    </li>
+                        <li>
+                            <form action="{{route('searchCat',$item)}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
+                            </form>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -120,7 +131,7 @@
                     <ul class="tag">
                         @foreach ($tags as $item)
 
-                    <li><a href="{{route('searchTag',$item)}}">{{$item->tag}}</a></li>
+                        <li><a href="{{route('searchTag',$item)}}">{{$item->tag}}</a></li>
                         @endforeach
                     </ul>
                 </div>

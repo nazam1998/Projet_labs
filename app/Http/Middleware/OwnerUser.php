@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class editArticle
+class OwnerUser
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,8 @@ class editArticle
      */
     public function handle($request, Closure $next)
     {
-        $article=$request->route()->parameters()['article'];
-        if(Auth::user()->role_id==3||(Auth::user()->role_id==2 && $article->user_id==Auth::id())){
-
+        $comment=$request->route()->parameters()['comment'];
+        if($comment->user_id==Auth::id()){
             return $next($request);
         }
         return redirect()->back();

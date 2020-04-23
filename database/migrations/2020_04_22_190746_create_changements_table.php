@@ -19,7 +19,7 @@ class CreateChangementsTable extends Migration
             $table->string('prenom');
             $table->string('email');
             $table->string('image');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');

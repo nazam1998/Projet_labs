@@ -45,9 +45,9 @@ return [
     |
     */
 
-    'logo' => 'Projet <b>Labs</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => 'Project',
+    'logo_img' => 'img/logo.png',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
@@ -215,6 +215,12 @@ return [
             'icon' => 'fas fa-undo'
         ],
         [
+            'text'=>'Profil',
+            'icon'=>'fas fa-user-cog',
+            'url'=>'profile'
+        ],
+        [
+            'can'=>'manage-user',
             'text' => 'User Management',
             'icon' => 'fas fa-fw fa-user',
             'submenu' => [
@@ -228,11 +234,18 @@ return [
                     'text' => 'Users',
                     'url'  => 'admin/user',
                     'icon' => 'fas fa-fw fa-users',
-                    // 'can'=>'admin'
+                    'can'=>'ceo'
+                ],
+                [
+                    'text' => 'Changement',
+                    'url'  => 'admin/changement',
+                    'icon' => 'fas fa-fw fa-save',
+                    'can'=>'change'
                 ],
             ]
         ],
         [
+            'can'=>'manage-article',
             'text' => 'Article Management',
             'icon' => 'fas fa-newspaper',
             'submenu' => [
@@ -240,114 +253,112 @@ return [
                     'text' => 'Article',
                     'url'  => 'admin/article',
                     'icon' => 'fas fa-fw fa-newspaper',
-                    // 'can' => 'redac'
+                    'can'=>'add-article'
                 ],
                 [
                     'text' => 'Categorie',
                     'url'  => 'admin/categorie',
                     'icon' => 'fas fa-fw fa-shapes',
-                    // 'can'=>'admin'
+                    'can'=>'admin'
                 ],
                 [
                     'text' => 'Tag',
                     'url'  => 'admin/tag',
                     'icon' => 'fas fa-fw fa-tags',
-                    // 'can'=>'admin'
+                    'can'=>'admin'
                 ],
                 [
                     'text' => 'Comment',
                     'url'  => 'admin/comment',
                     'icon' => 'fas fa-fw fa-comment',
-                    // 'can'=>'admin'
+                    'can'=>'admin'
                 ],
             ]
         ],
+
         [
             'text' => 'Mail Management',
             'icon' => 'fas fa-fw fa-mail-bulk',
+            'can'=>'admin',
             'submenu' => [
                 [
                     'text' => 'Newsletter',
                     'url'  => 'admin/newsletter',
                     'icon' => 'fas fa-fw fa-envelope',
-                    // 'can'=>'admin'
+                    'can'=>'admin'
                 ],
                 [
                     'text' => 'Messages',
                     'url'  => 'admin/formulaire',
                     'icon' => 'fas fa-fw fa-envelope-square',
-                    // 'can'=>'admin'
+                    'can'=>'admin'
                 ],
             ]
         ],
-        ['header' => 'Website Setting'],
         [
-            'text' => 'Accueil',
-            'url'  => 'admin/accueil',
-            'icon' => 'fas fa-fw fa-home',
-            // 'can'=>'admin'
+            'text'=>'Website Settings',
+            'icon'=>'fas fa-globe',
+            'can'=>'admin',
+            'submenu'=>[
+                [
+                    'text' => 'Accueil',
+                    'url'  => 'admin/accueil',
+                    'icon' => 'fas fa-fw fa-home',
+                    'can'=>'admin'
+                ],
+        
+                [
+                    'text' => 'Blog',
+                    'url'  => 'admin/blog',
+                    'icon' => 'fas fa-fw fa-blog',
+                    'can'=>'admin'
+                ],
+                [
+                    'text' => 'Carousel',
+                    'url'  => 'admin/carousel',
+                    'icon' => 'fas fa-fw fa-images',
+                    'can'=>'admin'
+                ],
+                
+        
+        
+                [
+                    'text' => 'Contact',
+                    'url'  => 'admin/contact',
+                    'icon' => 'fas fa-fw fa-phone-alt',
+                    'can'=>'admin'
+                ],
+                [
+                    'text' => 'Footer',
+                    'url'  => 'admin/footer',
+                    'icon' => 'fas fa-fw fa-copyright',
+                    'can'=>'admin'
+                ],
+        
+        
+                [
+                    'text' => 'Services',
+                    'url'  => 'admin/service',
+                    'icon' => 'fas fa-fw fa-cogs',
+                    'can'=>'admin'
+                ],
+                [
+                    'text' => 'Page Service',
+                    'url'  => 'admin/servicepage',
+                    'icon' => 'fab fa-fw fa-servicestack',
+                    'can'=>'admin'
+                ],
+        
+        
+                [
+                    'text' => 'Testimonial',
+                    'url'  => 'admin/testimonial',
+                    'icon' => 'fas fa-fw fa-comment',
+                    'can'=>'admin'
+                ],
+            ]
         ],
-
-        [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'icon' => 'fas fa-fw fa-blog',
-            // 'can'=>'admin'
-        ],
-        [
-            'text' => 'Carousel',
-            'url'  => 'admin/carousel',
-            'icon' => 'fas fa-fw fa-images',
-            // 'can'=>'admin'
-        ],
-        [
-            'text' => 'Changement',
-            'url'  => 'admin/changement',
-            'icon' => 'fas fa-fw fa-save',
-            // 'can'=>'admin'
-        ],
-
-
-        [
-            'text' => 'Contact',
-            'url'  => 'admin/contact',
-            'icon' => 'fas fa-fw fa-phone-alt',
-            // 'can'=>'admin'
-        ],
-        [
-            'text' => 'Footer',
-            'url'  => 'admin/footer',
-            'icon' => 'fas fa-fw fa-copyright',
-            // 'can'=>'admin'
-        ],
-        [
-            'text' => 'Google',
-            'url'  => 'admin/google',
-            'icon' => 'fab fa-fw fa-google',
-            // 'can'=>'admin'
-        ],
-
-
-        [
-            'text' => 'Services',
-            'url'  => 'admin/service',
-            'icon' => 'fas fa-fw fa-cogs',
-            // 'can'=>'admin'
-        ],
-        [
-            'text' => 'Page Service',
-            'url'  => 'admin/servicepage',
-            'icon' => 'fab fa-fw fa-servicestack',
-            // 'can'=>'admin'
-        ],
-
-
-        [
-            'text' => 'Testimonial',
-            'url'  => 'admin/testimonial',
-            'icon' => 'fas fa-fw fa-comment',
-            // 'can'=>'admin'
-        ],
+        
 
     ],
 

@@ -11,7 +11,7 @@ class ChangementController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware('auth');
+        $this->middleware('manage-user');
     }
     /**
      * Display a listing of the resource.

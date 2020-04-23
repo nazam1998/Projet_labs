@@ -30,8 +30,12 @@ class ProfileController extends Controller
         'image'=>['nullable','image'],
         'description'=>['nullable','string']
        ]);
-       
-        $changement=new Changement();
+       if(Changement::where('user_id',Auth::id())->first()){
+           $changement=Changement::where('user_id', Auth::id())->first();
+       }else{
+
+           $changement=new Changement();
+        }
         
         $changement->password=Hash::make($request->password);
         if($request->hasFile('image')){
@@ -54,8 +58,41 @@ class ProfileController extends Controller
             $changement->password=Auth::user()->password;
         }
         $changement->save();
-        return redirect()->back();
+        return redirect()->back()->with('msg','Votre requête de changement a été envoyé avec succès');
 
 
     }
+
+
+    public function update(Request $request){
+        $request->validate([
+         'nom' => ['required', 'string', 'max:255'],
+         'prenom' => ['required', 'string', 'max:255'],
+         'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.Auth::id()],
+         'password' => ['nullable', 'string', 'min:8',],
+         'image'=>['nullable','image'],
+         'description'=>['nullable','string']
+        ]);
+         if($request->hasFile('image')){
+             if(Storage::disk('public')->exists(Auth::user()->image)){
+                 Storage::disk('public')->delete(Auth::user()->image);
+             }
+             $imageName=Storage::disk('public')->put('',$request->image);
+             Auth::user()->image=$imageName;
+         }
+         Auth::user()->nom=$request->nom;
+         Auth::user()->prenom=$request->prenom;
+         Auth::user()->email=$request->email;
+         Auth::user()->description=$request->description;
+         Auth::user()->user_id=Auth::id();
+         if($request->has('password')){
+             Auth::user()->password=Hash::make($request->password);
+         }else{
+             Auth::user()->password=Auth::user()->password;
+         }
+         Auth::user()->save();
+         return redirect()->back()->with('msg','Votre requête de changement a été envoyé avec succès');
+ 
+ 
+     }
 }

@@ -12,7 +12,6 @@ class CommentController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin')->only('index');
-        $this->middleware('can:delete,comment,App\Comment')->only('destroy');
     }
     /**
      * Display a listing of the resource.
@@ -52,7 +51,8 @@ class CommentController extends Controller
         $comment->article_id=$article->id;
         $comment->user_id=Auth::id();
         $comment->save();
-        return redirect()->back();
+        return redirect()->to(url()->previous() . '#comment')->with('msg','Votre commentaire a été ajouté avec succès.');
+        
     }
 
     /**

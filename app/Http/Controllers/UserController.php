@@ -11,7 +11,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin');
+        $this->middleware('ceo')->only('edit','update');
     }
     public function index(){
         $users=User::all();
@@ -23,15 +23,10 @@ class UserController extends Controller
     }
     public function update(Request $request,User $user){
         $request->validate([
-            'description'=>'nullable|string',
             'role_id'=>'required|integer|min:2'
         ]);
 
         $user->role_id=$request->role_id;
-        if($request->has('description')){
-
-            $user->description=$request->description;
-        }
         $user->save();
         return redirect()->route('user.index');
     }

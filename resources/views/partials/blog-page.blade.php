@@ -20,7 +20,11 @@
 	                            <a href="">{{$item->categorie->categorie}}</a>
 	                            <a href="">
 	                                @foreach ($item->tags->shuffle()->take(3) as $index=>$tag)
+	                                @if($loop->last)
+	                                {{$tag->tag}}
+	                                @else
 	                                {{$tag->tag}},
+	                                @endif
 	                                @endforeach
 	                            </a>
 	                            <a href="">{{$item->comments->count()}} comment(s)</a>
@@ -71,7 +75,8 @@
 	                        <li>
 	                            <form action="{{route('searchTag',$item)}}" method="post">
 	                                @csrf
-	                                <button type="submit" class="btn btn-transparent">{{$item->tag}}</button>
+									<button type="submit" class="btn btn-transparent">{{$item->tag}}</button>
+	                            </form>
 	                        </li>
 	                        @endforeach
 	                    </ul>
@@ -84,7 +89,6 @@
 	                        <p>{{$blog->quote}}</p>
 	                    </div>
 	                </div>
-
 	            </div>
 	        </div>
 	    </div>

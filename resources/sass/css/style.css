@@ -425,6 +425,7 @@ ul {
 	position: relative;
 	margin-top: -50px;
 	padding: 50px 25px;
+	height: 411px;
 	text-align: center;
 	background: #f5faf8;
 	-webkit-box-shadow: 0 0 8px rgba(74, 74, 74, 0.1);
@@ -636,6 +637,7 @@ ul {
 ------------------------------------*/
 .service {
 	margin-bottom: 90px;
+	height: 169px;
 }
 
 .service,
@@ -928,6 +930,11 @@ ul {
 
 .features .icon-box {
 	margin-bottom: 90px;
+}
+
+.features .icon-box .service-text{
+	height: 169px;
+	width: 223px;
 }
 
 

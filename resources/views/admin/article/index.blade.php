@@ -34,15 +34,21 @@
                     <td>{{$item->texte}}</td>
                     <td>{{$item->categorie->categorie}}</td>
                     <td>
-                        @foreach ($item->tags as $tag)
-                        {{$tag->tag}},
-                        @endforeach
+                        <ul>
+
+                            @foreach ($item->tags as $tag)
+                            <li>{{$tag->tag}}</li>
+                            @endforeach
+                        </ul>
                     </td>
                     <td>{{$item->user->nom.' '.$item->user->prenom}}</td>
                 <td>
+                    @can('validate-article')
+                        
                     @if (!$item->valide)
                     <a class="btn btn-success" href="{{route('article.show',$item)}}">Valider</a>
                     @endif
+                    @endcan
                     <a href="{{route('article.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
                 <form action="{{route('article.destroy',$item)}}" method="post">
                     @csrf
