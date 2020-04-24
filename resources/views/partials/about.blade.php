@@ -7,18 +7,18 @@
             <div class="row">
                 <!-- single card -->
                 @foreach ($service3 as $item)
-                    
+
                 <div class="col-md-4 col-sm-6">
                     <div class="lab-card">
                         <div class="icon">
-                        <i class="{{$item->logo}}"></i>
+                            <i class="{{$item->logo}}"></i>
                         </div>
-                    <h2>{{$item->titre}}</h2>
-                    <p>{{$item->description}}</p>
-                        </div>
+                        <h2>{{$item->titre}}</h2>
+                        <p>{{$item->description}}</p>
                     </div>
-                    @endforeach
-                
+                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
             </div>
             @if ($accueil->showbutton)
             <div class="text-center mt60">
-                <a href="#contact" class="site-btn">Browse</a>
+                <a href="{{route('contact')}}" class="site-btn">Browse</a>
             </div>
             @endif
             <!-- popup video -->

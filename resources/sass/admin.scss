@@ -30,7 +30,12 @@ select {
     font-family: 'FontAwesome', 'Second Font name';
     font-weight: 90;
 }
-.nav-link .active{
-    background: #6a23b5;
-    color: #fff;
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active, [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:focus, [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:hover {
+	background-color: rgba(255,255,255,.9);
+	color: #6a23b5;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+	background-color: white;
+	color: #6a23b5;
 }

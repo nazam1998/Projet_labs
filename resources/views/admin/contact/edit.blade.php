@@ -9,6 +9,9 @@ Contact Edit
     <div class="card-header">
         <h3 class="card-title">Edition des éléments de contact</h3>
     </div>
+    <div class="card-header rounded-0">
+        <h3 class="card-title">Pour mettre le premier titre en vert ou le deuxième en blanc, mettez le entre []</h3>
+    </div>
     <!-- /.card-header -->
     <!-- form start -->
 <form role="form" action="{{route('contact.update',$contact)}}" method="POST" enctype="multipart/form-data">

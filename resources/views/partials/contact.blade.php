@@ -5,10 +5,10 @@
 				<!-- contact info -->
 				<div class="col-md-5 col-md-offset-1 contact-info col-push">
 					<div class="section-title left">
-					<h2>{{$contact->titre}}</h2>
+					<h2>{!!App\Helper\ColorChanger::green($contact->titre) !!}</h2>
 					</div>
 					<p>{{$contact->texte}}</p>
-					<h3 class="mt60">{{$contact->soustitre}}</h3>
+					<h3 class="mt60">{!! App\Helper\ColorChanger::white($contact->sous_titre) !!}</h3>
 					<p class="con-item">{{$contact->adresse}}<br> {{$contact->ville}} </p>
 					<p class="con-item">{{$contact->numero}}</p>
 					<p class="con-item">{{$contact->email}}</p>
