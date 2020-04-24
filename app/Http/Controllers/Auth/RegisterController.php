@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image'=>['required','image'],
+            'image' => ['required', 'image'],
         ]);
     }
 
@@ -67,19 +67,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $image=Storage::disk('public')->put('',$data['image']);
-        if(count(User::all())==0){
-            $role=2;
-        }else{
-            $role=4;
+        $image = Storage::disk('public')->put('', $data['image']);
+        if (count(User::all()) == 0) {
+            $role = 2;
+        } else {
+            $role = 4;
         }
         return User::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'image'=>$image,
-            'role_id'=>$role
+            'image' => $image,
+            'role_id' => $role
 
         ]);
     }

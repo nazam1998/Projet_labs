@@ -32,7 +32,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('id','asc')->get();
         return view('admin.article.index', compact('articles'));
     }
 

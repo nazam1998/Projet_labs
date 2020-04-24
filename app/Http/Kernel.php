@@ -55,6 +55,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'admin' => \App\Http\Middleware\isAdmin::class,
         'ceo' => \App\Http\Middleware\isCEO::class,
+        'muser' => \App\Http\Middleware\ManageUser::class,
         'webmaster' => \App\Http\Middleware\Webmaster::class,
         'articlemake' => \App\Http\Middleware\makeArticle::class,
         'articleedit' => \App\Http\Middleware\editArticle::class,

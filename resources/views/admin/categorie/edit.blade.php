@@ -20,8 +20,7 @@ Catégorie Edit
                 @error('categorie')
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="categorie" value="{{old('categorie',$categorie->categorie)}}" class="form-control" id="exampleInputEmail1"
-                    placeholder="Enter email">
+                <input type="text" name="categorie" value="{{old('categorie',$categorie->categorie)}}" class="form-control" id="exampleInputEmail1">
             </div>
             
         </div>

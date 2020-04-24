@@ -258,7 +258,7 @@ return [
                 [
                     'text' => 'Categorie',
                     'url'  => 'admin/categorie',
-                    'icon' => 'fas fa-fw fa-shapes',
+                    'icon' => 'fas fa-fw fa-list-ul',
                     'can'=>'admin'
                 ],
                 [

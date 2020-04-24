@@ -48,6 +48,7 @@ Route::resource('admin/blog', 'BlogController');
 
 Route::resource('admin/carousel', 'CarouselController');
 
+
 Route::resource('admin/categorie', 'CategorieController');
 
 

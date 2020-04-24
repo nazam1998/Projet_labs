@@ -16,12 +16,11 @@ Blog Edit
     @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Quote</label>
+                <label for="">Quote</label>
                 @error('quote')
                      <p class="alert alert-danger">{{$message}}</p>
                 @enderror
-                <input type="text" name="quote" value="{{old('quote',$blog->quote)}}" class="form-control" id="exampleInputEmail1"
-                    placeholder="Enter email">
+                <input type="text" name="quote" value="{{old('quote',$blog->quote)}}" class="form-control" id="">
             </div>
             
 

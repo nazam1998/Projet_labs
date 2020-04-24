@@ -4,7 +4,7 @@
 		<div class="hero-content">
 			<div class="hero-center">
 				<img src="{{asset('storage/'.$accueil->big_logo)}}" alt="">
-				<p>Get your freebie template now!</p>
+				<p>{!!App\Helper\ColorChanger::span($accueil->titre_carousel)!!}</</p>
 			</div>
 		</div>
 		<!-- slider -->

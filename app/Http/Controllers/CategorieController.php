@@ -97,6 +97,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
+        dd('hello');
         $categorie->delete();
         return redirect()->back();
     }

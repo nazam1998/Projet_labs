@@ -24,10 +24,14 @@ Back Office Catégorie
 
             <tr>
                 <td>{{$item->categorie}}</td>
-                <td>
-                <a href="{{route('categorie.edit',$item)}}" class="btn btn-warning ml-5">Editer</a>
-                <a href="{{route('categorie.destroy',$item)}}" class="btn btn-danger">Supprimer</a>
-                </td>
+                <td class="row">
+                <a href="{{route('categorie.edit',$item)}}" class="btn btn-warning mx-5">Editer</a>
+                <form action="{{route('categorie.destroy',$item)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                </form>
+            </td>
             </tr>
                 @endforeach
 

@@ -33,9 +33,13 @@
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->fonction}}</td>
                     <td>{{$item->texte}}</td>
-                <td>
-                    <a href="{{route('testimonial.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
-                <a href="{{route('testimonial.destroy',$item)}}" class="btn btn-danger">Supprimer</a>
+                <td class="row">
+                    <a href="{{route('testimonial.edit',$item)}}" class="btn btn-warning my-2 mx-1">Editer</a>
+                    <form action="{{route('testimonial.destroy',$item)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 </td>
                 </tr>
                 @endforeach

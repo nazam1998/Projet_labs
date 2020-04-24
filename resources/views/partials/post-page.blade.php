@@ -104,6 +104,7 @@
                 <!-- Single widget -->
                 <div class="widget-item">
                     <form action="{{route('search')}}" class="search-form" method="POST">
+                        @csrf
                         <input type="text" placeholder="Search" name="titre">
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
                     </form>

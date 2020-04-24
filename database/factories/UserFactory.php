@@ -22,7 +22,7 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
     $imageName=Str::random(10).'.jpg';
     Storage::disk('public')->copy('avatar/01.jpg', $imageName);
-    $role=Role::inRandomOrder()->where('id','!=',2)->first()->id;
+    $role=Role::inRandomOrder()->where('id','!=',2)->where('id','!=',1)->first()->id;
     return [
         'nom' => $faker->name,
         'prenom' => $faker->name,

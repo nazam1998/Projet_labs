@@ -11,6 +11,11 @@ class ColorChanger{
         return str_replace( array( '[' , ']' ), array('<span>','</span>'), $string);
     
     }
+    public static function span($string){
+
+        return str_replace( array( '[' , ']' ), array('<span style="color: #2be6ab;">','</span>'), $string);
+    
+    }
 
 
 
