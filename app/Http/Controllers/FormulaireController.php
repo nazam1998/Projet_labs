@@ -7,6 +7,7 @@ use App\Mail\RegisterMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class FormulaireController extends Controller
 {
@@ -43,19 +44,22 @@ class FormulaireController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => Auth::guest() ? 'required|string' : '',
-            'email' => Auth::guest() ? 'required|email|unique:formulaires':'',
+            'email' => Auth::guest() ? 'required|email|unique:formulaires' : '',
             'subject' => 'required|string',
             'message' => 'required|string',
         ]);
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous() . '#contact')->withErrors($validator)->withInput();
+        }
         $form = new Formulaire();
         if (Auth::guest()) {
             $form->name = $request->name;
             $form->email = $request->email;
-        }else{
-            $form->name=Auth::user()->nom;
-            $form->email=Auth::user()->email;
+        } else {
+            $form->name = Auth::user()->nom;
+            $form->email = Auth::user()->email;
         }
         $form->subject = $request->subject;
         $form->msg = $request->message;

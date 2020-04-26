@@ -68,6 +68,7 @@
     @endif
 </div>
 <div class="form-group mb-3">
+    <label for="">Password</label>
 <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}">
     @if ($errors->has('password'))
     <div class="invalid-feedback">

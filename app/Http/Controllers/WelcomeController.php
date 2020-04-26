@@ -36,11 +36,11 @@ class WelcomeController extends Controller
     }
     public function service(){
 
-        $lastservices=Service::latest()->take(9)->get();
+        $lastservices=Service::latest()->paginate(9);
         $accueil=Accueil::find(1);
         $services=Service::latest()->take(6)->get();
         $titres=Servicepage::find(1);
-        $articles=Article::where('valide',true)->latest()->take(3)->get();
+        $articles=Article::orderBy('id','desc')->where('valide',true)->latest()->take(3)->get();
         $footer=Footer::find(1);
         $contact=Contact::find(1);
         return view('service',compact('lastservices','services','accueil','contact','footer','articles','titres'));
@@ -49,7 +49,7 @@ class WelcomeController extends Controller
     public function blog(){
         $accueil=Accueil::find(1);
         $blog=Blog::find(1);
-        $articles=Article::where('valide',true)->paginate(3);
+        $articles=Article::orderBy('id','desc')->where('valide',true)->paginate(3);
         $footer=Footer::find(1);
         $contact=Contact::find(1);
         $tags=Tag::inRandomOrder()->take(9)->get();

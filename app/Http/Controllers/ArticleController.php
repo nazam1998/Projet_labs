@@ -17,10 +17,10 @@ class ArticleController extends Controller
 {
     public function __construct()
     {
-            $this->middleware('webmaster')->only('show');
-            $this->middleware('auth')->except(['search', 'searchTag', 'searchCategorie']);
-            $this->middleware('articlemake')->only('create', 'store', 'index');
-            $this->middleware('articleedit')->only('update', 'edit', 'destroy');
+        $this->middleware('webmaster')->only('show');
+        $this->middleware('auth')->except(['search', 'searchTag', 'searchCategorie']);
+        $this->middleware('articlemake')->only('create', 'store', 'index');
+        $this->middleware('articleedit')->only('update', 'edit', 'destroy');
     }
 
 
@@ -32,7 +32,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('id','asc')->get();
+        $articles = Article::orderBy('id', 'asc')->get();
         return view('admin.article.index', compact('articles'));
     }
 
@@ -73,7 +73,7 @@ class ArticleController extends Controller
         $article->categorie_id = $request->categorie;
         $article->valide = false;
         $article->save();
-        
+
         if ($request->has('tag')) {
 
             foreach ($request->tag as $item) {
@@ -143,7 +143,7 @@ class ArticleController extends Controller
         if ($request->has('tag')) {
 
             $article->tags()->detach();
-            
+
             foreach ($request->tag as $item) {
                 Tag::find($item)->articles()->attach($article->id);
                 $article->tags()->attach($item);
@@ -169,7 +169,9 @@ class ArticleController extends Controller
     }
     public function search(Request $request)
     {
-
+        $request->validate([
+            'titre'=>'nullable|string',
+        ]);
         $articles = Article::where('valide', true)->where('titre', 'LIKE', '%' . $request->titre . '%')->paginate(3);
         $accueil = Accueil::find(1);
         $blog = Blog::find(1);
@@ -179,6 +181,7 @@ class ArticleController extends Controller
         $categories = Categorie::inRandomOrder()->take(6)->get();
         return view('blog', compact('accueil', 'articles', 'tags', 'categories', 'footer', 'contact', 'blog'));
     }
+
 
     public function searchTag(Tag $tag)
     {
@@ -192,6 +195,7 @@ class ArticleController extends Controller
         $categories = Categorie::inRandomOrder()->take(6)->get();
         return view('blog', compact('accueil', 'articles', 'tags', 'categories', 'footer', 'contact', 'blog'));
     }
+
 
     public function searchCategorie(Categorie $categorie)
     {

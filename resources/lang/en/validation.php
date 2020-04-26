@@ -130,8 +130,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'emailnews' => [
+            'required' => 'The email field is required',
         ],
     ],
 

@@ -44,9 +44,12 @@
 	            </div>
 	            <!-- Sidebar area -->
 	            <div class="col-md-4 col-sm-5 sidebar">
+					@error('titre')
+					<p class="alert alert-danger">{{$message}}</p>
+						@enderror
 	                <!-- Single widget -->
 	                <div class="widget-item">
-	                    <form action="{{route('search')}}" class="search-form" method="POST">
+	                    <form action="{{route('search')}}" class="search-form" method="GET">
 	                        @csrf
 	                        <input type="text" placeholder="Search" name="titre">
 	                        <button class="search-btn"><i class="flaticon-026-search"></i></button>
@@ -58,7 +61,7 @@
 	                    <ul>
 	                        @foreach ($categories as $item)
 	                        <li>
-	                            <form action="{{route('searchCat',$item)}}" method="post">
+	                            <form action="{{route('searchCat',$item)}}" method="GET">
 	                                @csrf
 	                                <button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
 	                            </form>
@@ -73,7 +76,7 @@
 	                        @foreach ($tags as $item)
 
 	                        <li>
-	                            <form action="{{route('searchTag',$item)}}" method="post">
+	                            <form action="{{route('searchTag',$item)}}" method="GET">
 	                                @csrf
 									<button type="submit" class="btn btn-transparent">{{$item->tag}}</button>
 	                            </form>
@@ -93,4 +96,3 @@
 	        </div>
 	    </div>
 	</div>
-	<!-- page section end-->

@@ -29,16 +29,15 @@ class CreateArticlesTable extends Migration
             $table->timestamps();
         });
         
+        
         Schema::create('article_tag', function (Blueprint $table) {
             
             $table->id();
 
             $table->unsignedBigInteger('tag_id');
             $table->foreign('tag_id')->on('tags')->references('id')->onDelete('cascade')->onUpdate('cascade');
-           
             $table->unsignedBigInteger('article_id');
             $table->foreign('article_id')->on('articles')->references('id')->onDelete('cascade')->onUpdate('cascade');
-
             $table->timestamps();
         });
     }

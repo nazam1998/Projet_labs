@@ -6,6 +6,8 @@ use App\Article;
 use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 class CommentController extends Controller
 {
     public function __construct()
@@ -20,8 +22,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments=Comment::all();
-        return view('admin.comment.index',compact('comments'));
+        $comments = Comment::all();
+        return view('admin.comment.index', compact('comments'));
     }
 
     /**
@@ -40,19 +42,21 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Article $article)
+    public function store(Request $request, Article $article)
     {
-        $request->validate([
-            'comment'=>'required|string'
-        ]);
 
-        $comment= new Comment();
-        $comment->comment=$request->comment;
-        $comment->article_id=$article->id;
-        $comment->user_id=Auth::id();
+        $validator = Validator::make($request->all(), [
+            'comment' => 'required|string'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous() . '#comment')->withErrors($validator)->withInput();
+        }
+        $comment = new Comment();
+        $comment->comment = $request->comment;
+        $comment->article_id = $article->id;
+        $comment->user_id = Auth::id();
         $comment->save();
-        return redirect()->to(url()->previous() . '#comment')->with('msg','Votre commentaire a été ajouté avec succès.');
-        
+        return redirect()->to(url()->previous() . '#comment')->with('msg', 'Votre commentaire a été ajouté avec succès.');
     }
 
     /**

@@ -58,14 +58,14 @@
                                         {{\Illuminate\Support\Str::limit(date('F',strtotime($item->created_at)), 3, $end='')}},
                                         {{$item->created_at->format('Y')}} | {{$item->created_at->format('H:i:s')}}</h3>
 
-                                        <p>{{$item->comment}}</p>
-                                        @can('delete',$item, App\Comment::class)
-                                        <form action="{{route('comment.destroy',$item)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                        @endcan
+                                    <p>{{$item->comment}}</p>
+                                    @can('delete',$item, App\Comment::class)
+                                    <form action="{{route('comment.destroy',$item)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                    @endcan
                                 </div>
                             </li>
                             @endforeach
@@ -103,7 +103,10 @@
             <div class="col-md-4 col-sm-5 sidebar">
                 <!-- Single widget -->
                 <div class="widget-item">
-                    <form action="{{route('search')}}" class="search-form" method="POST">
+                    @error('titre')
+                <p class="alert alert-danger">{{$message}}</p>
+                    @enderror
+                    <form action="{{route('search')}}" class="search-form" method="GET">
                         @csrf
                         <input type="text" placeholder="Search" name="titre">
                         <button class="search-btn"><i class="flaticon-026-search"></i></button>
@@ -114,10 +117,8 @@
                     <h2 class="widget-title">Categories</h2>
                     <ul>
                         @foreach ($categories as $item)
-
                         <li>
-                        <li>
-                            <form action="{{route('searchCat',$item)}}" method="post">
+                            <form action="{{route('searchCat',$item)}}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-transparent">{{$item->categorie}}</button>
                             </form>
@@ -132,7 +133,12 @@
                     <ul class="tag">
                         @foreach ($tags as $item)
 
-                        <li><a href="{{route('searchTag',$item)}}">{{$item->tag}}</a></li>
+                        <li>
+                            <form action="{{route('searchTag',$item)}}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn btn-transparent">{{$item->tag}}</button>
+                            </form>
+                        </li>
                         @endforeach
                     </ul>
                 </div>

@@ -10,9 +10,12 @@
                 @if (session()->has('msgnews'))
                 <p class="alert alert-success">{{session('msgnews')}}</p>
                 @endif
+                @error('emailnews')
+                <p class="alert alert-danger">{{$message}}</p>
+                @enderror
                 <form class="nl-form" action="{{route('storenews')}}" method="POST">
                     @csrf
-                    <input type="text" name="email" placeholder="Your e-mail here">
+                    <input type="text" name="emailnews" placeholder="Your e-mail here">
                     <button class="site-btn btn-2" type="submit">Newsletter</button>
                 </form>
             </div>

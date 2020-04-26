@@ -38,9 +38,9 @@ Route::delete('comment/{comment}/delete','CommentController@destroy')->name('com
 Route::resource('admin/accueil', 'AccueilController');
 
 // Search
-Route::post('search/articles','ArticleController@search')->name('search');
-Route::post('search/articlesByTag/{tag}','ArticleController@searchTag')->name('searchTag');
-Route::post('search/articlesByCategorie/{categorie}','ArticleController@searchCategorie')->name('searchCat');
+Route::get('search/articles','ArticleController@search')->name('search');
+Route::get('search/articlesByTag/{tag}','ArticleController@searchTag')->name('searchTag');
+Route::get('search/articlesByCategorie/{categorie}','ArticleController@searchCategorie')->name('searchCat');
 // Ressource
 Route::resource('admin/article', 'ArticleController');
 

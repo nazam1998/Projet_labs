@@ -1,14 +1,15 @@
 @extends('layouts.admin')
 
 @section('title')
-    Article Table
+Article Table
 @endsection
 
 @section('content')
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Article Table</h3>
-    <h3 class="card-title mx-5"><a class="btn btn-primary" href="{{route('article.create')}}">Ajouter Article</a></h3>
+        <h3 class="card-title mx-5"><a class="btn btn-primary" href="{{route('article.create')}}">Ajouter Article</a>
+        </h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -42,20 +43,23 @@
                         </ul>
                     </td>
                     <td>{{$item->user->nom.' '.$item->user->prenom}}</td>
-                <td>
-                    @can('validate-article')
-                        
-                    @if (!$item->valide)
-                    <a class="btn btn-success" href="{{route('article.show',$item)}}">Valider</a>
-                    @endif
-                    @endcan
-                    <a href="{{route('article.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
-                <form action="{{route('article.destroy',$item)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                </form>
-                </td>
+                    <td>
+                        @can('validate-article')
+
+                        @if (!$item->valide)
+                        <a class="btn btn-success" href="{{route('article.show',$item)}}">Valider</a>
+                        @endif
+                        @endcan
+                        @can('edit-article',$item)
+
+                        <a href="{{route('article.edit',$item)}}" class="btn btn-warning my-2">Editer</a>
+                        <form action="{{route('article.destroy',$item)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                        @endcan
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -20,6 +20,8 @@
                 </div>
             </div>
             @endforeach
+
+            {{$lastservices->links()}}
             
         </div>
         <div class="text-center">

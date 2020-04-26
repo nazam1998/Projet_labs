@@ -6,8 +6,7 @@ use App\Mail\NewsMail;
 use App\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
 
 class NewsletterController extends Controller
 {
@@ -23,11 +22,11 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        $news=Newsletter::all();
-        return view('admin.newsletter.index',compact('news'));
+        $news = Newsletter::all();
+        return view('admin.newsletter.index', compact('news'));
     }
 
-   
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,15 +35,20 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'email'=>'required|email|unique:newsletters'
+
+        $validator = Validator::make($request->all(), [
+            'emailnews' => 'required|email|unique:newsletters'
         ]);
-        $news=new Newsletter();
-        $news->email=$request->email;
-        $news->save();
-        Mail::to($news->email)->send(new NewsMail($news->email));
-        return redirect()->to(url()->previous() . '#formulaire-news')->with('msgnews', 'Merci pour votre insciption');
+            
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous() . '#formulaire-news')->withErrors($validator)->withInput();
         }
 
-    
+        $news = new Newsletter();
+        $news->email = $request->email;
+        $news->save();
+        Mail::to($news->email)->send(new NewsMail($news->email));
+
+        return redirect()->to(url()->previous() . '#formulaire-news')->with('msgnews', 'Merci pour votre insciption');
+    }
 }
