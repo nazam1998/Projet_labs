@@ -8,25 +8,27 @@
                     <div class="post-thumbnail">
                         <img src="{{asset('storage/'.$article->image)}}" alt="">
                         <div class="post-date">
-                            <h2>{{$article->created_at->format('d')}}</h2>
-                            <h3>{{\Illuminate\Support\Str::limit(date('F',strtotime($article->created_at)), 3, $end='')}}
-                                {{$article->created_at->format('Y')}}</h3>
+                            <h2>{{$article->date()}}</h2>
+                            <h3>{{$article->month()}}
+                                {{$article->year()}}</h3>
                         </div>
                     </div>
                     <div class="post-content">
                         <h2 class="post-title">{{$article->titre}}</h2>
                         <div class="post-meta">
-                            <a href="">{{$article->categorie->categorie}}</a>
-                            <a href="">
-                                @foreach ($article->tags->shuffle()->take(3) as $index=>$item)
+                        <span><a href="{{route('searchCat',$article->categorie)}}">{{$article->categorie->categorie}}</a></span>
+                           <span>
+                            @foreach ($article->tags->shuffle()->take(3) as $index=>$item)
+                           <a href="{{route('searchTag',$item)}}">
                                 @if($loop->last)
                                 {{$item->tag}}
                                 @else
                                 {{$item->tag}},
                                 @endif
-                                @endforeach
                             </a>
-                            <a href="">{{$article->comments->count()}} comment(s)</a>
+                                @endforeach
+                            </span>
+                          <span><a href="#comments">{{$article->comments->count()}} comment(s)</a></span>
                         </div>
                         <p>{{$article->texte}}</p>
                     </div>
@@ -42,7 +44,7 @@
                         </div>
                     </div>
                     <!-- Post Comments -->
-                    <div class="comments">
+                    <div class="comments" id='comments'>
                         <h2>Comments ({{$article->comments->count()}})</h2>
                         <ul class="comment-list">
                             @foreach ($comments as $item)

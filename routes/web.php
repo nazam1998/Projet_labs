@@ -38,9 +38,13 @@ Route::delete('comment/{comment}/delete','CommentController@destroy')->name('com
 Route::resource('admin/accueil', 'AccueilController');
 
 // Search
+
 Route::get('search/articles','ArticleController@search')->name('search');
+
 Route::get('search/articlesByTag/{tag}','ArticleController@searchTag')->name('searchTag');
+
 Route::get('search/articlesByCategorie/{categorie}','ArticleController@searchCategorie')->name('searchCat');
+
 // Ressource
 Route::resource('admin/article', 'ArticleController');
 

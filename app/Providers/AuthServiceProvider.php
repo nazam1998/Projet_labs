@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Changement;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -28,43 +29,41 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('admin', function ($user) {
-            return $user->role_id==1;
+            return $user->role_id == 1;
         });
-        Gate::define('ceo',function($user){
-            return $user->role_id==2;
+        Gate::define('ceo', function ($user) {
+            return $user->role_id == 2;
         });
-        Gate::define('manage-article',function($user){
+        Gate::define('manage-article', function ($user) {
 
-            return $user->role_id<=4 && $user->role_id !=2;
-            
+            return $user->role_id <= 4 && $user->role_id != 2;
         });
         Gate::define('add-article', function ($user) {
 
-            return $user->role_id==3 || $user->role_id==4;
-        
+            return $user->role_id == 3 || $user->role_id == 4;
         });
         Gate::define('validate-article', function ($user) {
 
-            return $user->role_id==4;
-        
+            return $user->role_id == 4;
         });
-        Gate::define('edit-article', function ($user,$article) {
+        Gate::define('edit-article', function ($user, $article) {
 
-            return ($user->role_id==3 && $article->user_id==$user->id) || $user->role_id==4;
-        
+            return ($user->role_id == 3 && $article->user_id == $user->id) || $user->role_id == 4;
         });
         Gate::define('manage-user', function ($user) {
 
-            return $user->role_id==4 || $user->role_id==2;
-        
+            return $user->role_id == 4 || $user->role_id == 2 || $user->role_id == 1;
         });
-        
+
         Gate::define('change', function ($user) {
 
-            return $user->role_id==4 || $user->role_id==1;
-        
+            return $user->role_id == 4 || $user->role_id == 1;
         });
-        
+
+        Gate::define('queued', function ($user) {
+            return Changement::where('user_id', $user->id)->first();
+        });
+
 
 
         //

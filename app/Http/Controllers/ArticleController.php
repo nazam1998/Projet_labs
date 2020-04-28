@@ -172,7 +172,7 @@ class ArticleController extends Controller
         $request->validate([
             'titre'=>'nullable|string',
         ]);
-        $articles = Article::where('valide', true)->where('titre', 'LIKE', '%' . $request->titre . '%')->paginate(3);
+        $articles = Article::where('valide', true)->orderBy('id','desc')->where('titre', 'LIKE', '%' . $request->titre . '%')->paginate(3);
         $accueil = Accueil::find(1);
         $blog = Blog::find(1);
         $footer = Footer::find(1);
@@ -185,8 +185,8 @@ class ArticleController extends Controller
 
     public function searchTag(Tag $tag)
     {
-
-        $articles = $tag->articles()->where('valide', true)->paginate(3);
+        
+        $articles = $tag->articles()->where('valide', true)->orderBy('id','desc')->paginate(3);
         $accueil = Accueil::find(1);
         $blog = Blog::find(1);
         $footer = Footer::find(1);
@@ -199,7 +199,7 @@ class ArticleController extends Controller
 
     public function searchCategorie(Categorie $categorie)
     {
-        $articles = Article::where('valide', true)->where('categorie_id', $categorie->id)->paginate(3);
+        $articles = Article::where('valide', true)->orderBy('id','desc')->where('categorie_id', $categorie->id)->paginate(3);
         $accueil = Accueil::find(1);
         $blog = Blog::find(1);
         $footer = Footer::find(1);

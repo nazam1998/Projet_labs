@@ -80,7 +80,12 @@
 
 <button type="submit" class="btn btn-primary">Save</button>
 @else 
+@cannot('queued')
+    
 <button type="submit" class="btn btn-primary">Submit</button>
+@else 
+<p class="text-warning text-center">Please Wait while we are editing your profile</p>
+@endcannot
 @endif
 
 </form>
